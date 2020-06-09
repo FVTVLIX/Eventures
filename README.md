@@ -66,7 +66,7 @@ _The **Eventures** MVP will include having a fully functioning backend RESTful J
 
 [Live Demo](https://xd.adobe.com/view/1e841117-45c4-4a8a-61b1-c5e0d05b41dd-68b5/)
 
-- Desktop Landing
+- Desktop Home Landing
 
 ![Desktop Home](https://i.imgur.com/094Zmcj.png)
 
@@ -74,11 +74,11 @@ _The **Eventures** MVP will include having a fully functioning backend RESTful J
 
 ![Page Layout](https://i.imgur.com/1GRBIcp.png)
 
-- Tablet Resource Index
+- Tablet Home Landing
 
 ![iPad Pro 12.9in Home Screen](https://i.imgur.com/v7hOcT4.png)
 
-- Mobile Resource Index
+- Mobile Home Landing
 
 ![iPhone XR/XS Max Home Screen](https://i.imgur.com/sXfpg2U.png)
 
@@ -119,13 +119,13 @@ src
                 |__ EventCreate.css
                 |__ EventManage.jsx
                 |__ EventManage.css
+                |__ Ticket.jsx
+                |__ Ticket.css
           |__ Shared
                 |__ Nav.jsx
                 |__ Nav.css
                 |__ Footer.jsx
                 |__ Footer.css
-
-      
 |__ services/
 
 ```
@@ -171,7 +171,7 @@ src
 
 #### ERD Model
 
-> Use this section to display an image of a computer generated ERD model.
+![ERD Model](https://i.imgur.com/eqGhGYD.png)
 
 <br>
 
@@ -179,7 +179,11 @@ src
 
 ## Post-MVP
 
-> Use this section to document ideas you've had that would be fun (or necessary) for your Post-MVP. This will be helpful when you return to your project after graduation!
+- _Add seemless calendar functionality_
+- _Add membership tiers for exclusive discounts/events_
+- _Implement a live chat feature for ticket-holders with the same event._
+- _Integrate connections with social media._
+- _Add other services, such as Online Webinar Events/Classes._
 
 ***
 
