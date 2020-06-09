@@ -86,7 +86,7 @@ _The **Eventures** MVP will include having a fully functioning backend RESTful J
 
 #### Component Tree
 
-> Use this section to display the structure of how your React components are being rendered. This should show the parent to child relation between you components. In other words, show which components are rendering the other components. 
+![Component Tree](https://s3.amazonaws.com/assets.mockflow.com/app/wireframepro/company/C9fa84aae71f450c53e09da0dabcead75/projects/Mb90be416dfcd1ce48f60734ae46a9b331591670591679/pages/c54a8168671049e9ba1df770069c7f55/image/c54a8168671049e9ba1df770069c7f55.png)
 
 #### Component Hierarchy
 
