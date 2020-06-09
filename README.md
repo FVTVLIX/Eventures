@@ -62,31 +62,27 @@ _The **Eventures** MVP will include having a fully functioning backend RESTful J
 
 #### Wireframes
 
-> Use the Wireframes section to display desktop, tablet and mobile views.
+#### Adobe XD Wireframe
 
-![Dummy Link](url)
+![Live Demo](https://xd.adobe.com/view/1e841117-45c4-4a8a-61b1-c5e0d05b41dd-68b5/)
 
 - Desktop Landing
 
-![Dummy Link](url)
-
-- Desktop Hero
-
-![Dummy Link](url)
+![Desktop Home](https://i.imgur.com/094Zmcj.png)
 
 - Resource Index
 
-![Dummy Link](url)
-
-- Resource Show
-
-![Dummy Link](url)
+![Page Layout](https://i.imgur.com/1GRBIcp.png)
 
 - Tablet Resource Index
 
-![Dummy Link](url)
+![iPad Pro 12.9in Home Screen](https://i.imgur.com/v7hOcT4.png)
 
 - Mobile Resource Index
+
+![iPhone XR/XS Max Home Screen](https://i.imgur.com/sXfpg2U.png)
+
+<br>
 
 #### Component Tree
 
@@ -105,6 +101,8 @@ src
       |__ App.css
       |__ Index.jsx
       |__ Index.css
+      |__ Main.jsx
+      |__ Main.css
           |__ User
                 |__ Login.jsx
                 |__ Login.css               
@@ -119,6 +117,8 @@ src
                 |__ EventInfo.css
                 |__ EventCreate.jsx
                 |__ EventCreate.css
+                |__ EventManage.jsx
+                |__ EventManage.css
           |__ Shared
                 |__ Nav.jsx
                 |__ Nav.css
