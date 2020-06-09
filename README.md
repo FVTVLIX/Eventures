@@ -64,7 +64,7 @@ _The **Eventures** MVP will include having a fully functioning backend RESTful J
 
 #### Adobe XD Wireframe
 
-![Live Demo](https://xd.adobe.com/view/1e841117-45c4-4a8a-61b1-c5e0d05b41dd-68b5/)
+[Live Demo](https://xd.adobe.com/view/1e841117-45c4-4a8a-61b1-c5e0d05b41dd-68b5/)
 
 - Desktop Landing
 
