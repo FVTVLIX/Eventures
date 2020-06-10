@@ -484,3 +484,171 @@ ActionController::ParameterMissing (param is missing or the value is empty: user
   
 app/controllers/users_controller.rb:50:in `user_params'
 app/controllers/users_controller.rb:18:in `create'
+Started POST "/users" for ::1 at 2020-06-10 12:26:51 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+Completed 400 Bad Request in 11ms (ActiveRecord: 0.0ms | Allocations: 1741)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:50:in `user_params'
+app/controllers/users_controller.rb:18:in `create'
+Started POST "/users" for ::1 at 2020-06-10 12:28:06 -0400
+Processing by UsersController#create as */*
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms | Allocations: 1452)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:50:in `user_params'
+app/controllers/users_controller.rb:18:in `create'
+Started POST "/users" for ::1 at 2020-06-10 13:41:32 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+Completed 400 Bad Request in 8ms (ActiveRecord: 0.0ms | Allocations: 1746)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:50:in `user_params'
+app/controllers/users_controller.rb:18:in `create'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.7ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 1]]
+  [1m[36mEvent Destroy (0.3ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.4ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 8]]
+  [1m[36mCategory Destroy (0.9ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 9]]
+  [1m[36mCategory Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 10]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 11]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 12]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 13]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 13]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "admin"], ["email", "admin@email.com"], ["password_digest", "$2a$12$ybsP.Jr2D6ANUuw0clZS8u6taqsk9lq.4Zb4IK1AflQRpwsFQAtf2"], ["created_at", "2020-06-10 17:41:42.608260"], ["updated_at", "2020-06-10 17:41:42.608260"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "All"], ["created_at", "2020-06-10 17:41:42.612778"], ["updated_at", "2020-06-10 17:41:42.612778"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Free"], ["created_at", "2020-06-10 17:41:42.616935"], ["updated_at", "2020-06-10 17:41:42.616935"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Music"], ["created_at", "2020-06-10 17:41:42.620560"], ["updated_at", "2020-06-10 17:41:42.620560"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Food & Drink"], ["created_at", "2020-06-10 17:41:42.624615"], ["updated_at", "2020-06-10 17:41:42.624615"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "This Weekend"], ["created_at", "2020-06-10 17:41:42.628555"], ["updated_at", "2020-06-10 17:41:42.628555"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Charity & Causes"], ["created_at", "2020-06-10 17:41:42.632939"], ["updated_at", "2020-06-10 17:41:42.632939"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (2.9ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "12th Annual Food Festival"], ["hosted_by", "NYC"], ["date", "July 20th, 2020 7:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-10 17:41:42.643542"], ["updated_at", "2020-06-10 17:41:42.643542"], ["img_url", "https://i.imgur.com/x3bNna2.jpg"]]
+  [1m[36mEvent::HABTM_Categories Create (0.4ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 14], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 15], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 17], ["event_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/users" for ::1 at 2020-06-10 13:41:56 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+Completed 400 Bad Request in 8ms (ActiveRecord: 0.0ms | Allocations: 1746)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:50:in `user_params'
+app/controllers/users_controller.rb:18:in `create'
+Started GET "/users" for ::1 at 2020-06-10 13:45:39 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 35ms (Views: 21.5ms | ActiveRecord: 5.7ms | Allocations: 7063)
+
+
+Started POST "/users" for ::1 at 2020-06-10 13:45:49 -0400
+Processing by UsersController#create as */*
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 130)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:50:in `user_params'
+app/controllers/users_controller.rb:18:in `create'
+Started POST "/users" for ::1 at 2020-06-10 13:54:56 -0400
+Processing by UsersController#create as */*
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 121)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:50:in `user_params'
+app/controllers/users_controller.rb:18:in `create'
+Started POST "/users" for ::1 at 2020-06-10 13:55:29 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"drdre", "email"=>"drdre@email.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "drdre"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "drdre@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "drdre"], ["email", "drdre@email.com"], ["password_digest", "$2a$12$6n5O4p8KFlwVkQ0cxTIsi./rLiHEa5Zs2u3XhLml9uPWjuIN3EUIS"], ["created_at", "2020-06-10 17:55:29.496526"], ["updated_at", "2020-06-10 17:55:29.496526"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 296ms (Views: 1.7ms | ActiveRecord: 9.6ms | Allocations: 6996)
+
+
+Started GET "/users" for ::1 at 2020-06-10 13:56:14 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"username"=>"drdre", "email"=>"drdre@email.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 1.6ms | Allocations: 1162)
+
+
+Started GET "/events" for ::1 at 2020-06-10 14:11:04 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#index as */*
+  Parameters: {"user"=>{"username"=>"drdre", "email"=>"drdre@email.com", "password"=>"[FILTERED]"}, "event"=>{}}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 27ms (Views: 23.5ms | ActiveRecord: 4.9ms | Allocations: 6936)
+
+
