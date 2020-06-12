@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import { loginUser, registerUser, verifyUser, removeToken } from './services/auth'
 import Nav from './components/shared/Nav'
+import Main from './components/Main'
 
 
 
@@ -41,7 +42,16 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav
+          currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+        />
+        <Main
+          handleLoginSubmit={this.handleLoginSubmit}
+          handleRegisterSubmit={this.handleRegisterSubmit}
+          currentUser={this.state.currentUser}
+        />
+        
       </div>
     )
   }
