@@ -1,4 +1,5 @@
 import React from 'react'
+import './EventList.css'
 import { Link } from 'react-router-dom'
 
 export default function EventList(props) {
@@ -11,7 +12,14 @@ export default function EventList(props) {
       {
         events.map(event => (
           <React.Fragment key={event.id}>
-            <Link to={`/events/${event.id}`}>{event.name}</Link>
+            <Link to={`/events/${event.id}`}>
+              <p className='event_title'>{event.title}</p>
+              <p className='event_date'>{event.date}</p>
+              <img
+                // alt="event_images"
+                className='event_image'
+                src={event.img_url} />
+            </Link>
             {
               currentUser && currentUser.id === event.user_id && (
                 <>

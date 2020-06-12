@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import './EventManage.css'
 
-export default class CreateEvent extends Component {
+export default class EventManage extends Component {
 
   state = {
     title: "",
@@ -11,20 +12,36 @@ export default class CreateEvent extends Component {
     img_url: ""
   }
 
+
+  componentDidMount() {
+    if (this.props.event) {
+      this.setEventForm();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.event !== this.props.event) {
+      this.setEventForm();
+    }
+  }
+
+  setEventForm = () => {
+    const { name } = this.props.event;
+    this.setState({ name })
+  } 
+
   handleChange = (e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     this.setState({
-      [name]: value
-
-
+      name: value
     })
   }
+
 
   render() {
 
     const { title, hosted_by, date, location, price, img_url } = this.state;
-    // console.log(this.state)
-    const { postEvent, history } = this.props;
+    const { putEvent, history, event } = this.props;
 
     return (
       <form
@@ -42,7 +59,7 @@ export default class CreateEvent extends Component {
           })
         }}>
         
-        <h3>Create An Event</h3>
+        <h3>Manage Event</h3>
 
         <label htmlFor="title">Title:</label>
         <input

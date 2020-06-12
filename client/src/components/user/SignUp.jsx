@@ -74,7 +74,7 @@ export default class SignUp extends Component {
         <br />
 
         <button>Submit</button>
-
+        
       </form>
     )
   }
