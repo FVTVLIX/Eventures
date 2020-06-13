@@ -47,7 +47,7 @@ export default class EventManage extends Component {
       <form
         onSubmit={(e) => {
           e.preventDefault()
-          postEvent(this.state);
+          putEvent(event.id, this.state);
           history.push('/events');
           this.setState({
             title: "",
