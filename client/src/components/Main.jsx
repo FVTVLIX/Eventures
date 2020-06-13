@@ -65,26 +65,34 @@ export default class Main extends Component {
     return (
       <main>
 
-        <Route path='/user/login' render={(props) => (
+        <Route
+          path='/user/login'
+          render={(props) => (
           <Login
             {...props}
             handleLoginSubmit={this.props.handleLoginSubmit} />
         )} />
 
-        <Route path='/user/register' render={(props) => (
+        <Route
+          path='/user/register'
+          render={(props) => (
           <SignUp
             {...props}
             handleRegisterSubmit={this.props.handleRegisterSubmit}
           />
         )} />
 
-        <Route path='/categories' render={() => (
+        <Route
+          path='/categories'
+          render={() => (
           <ShowCategories
             categories={this.state.categories}
           />
         )} />
 
-        <Route path='/events' render={() => (
+        <Route
+          path='/events'
+          render={() => (
           <EventList
             events={this.state.events}
             currentUser={this.props.currentUser}
@@ -92,14 +100,18 @@ export default class Main extends Component {
           />
         )} />
 
-        <Route path='/new/event' render={(props) => (
+        <Route
+          path='/new/event'
+          render={(props) => (
           <CreateEvent
             {...props}
             postEvent={this.postEvent}
           />
         )} />
 
-        <Route path='/events/:id' render={(props) => {
+        <Route
+          path='/events/:id'
+          render={(props) => {
           const eventId = props.match.params.id;
           return <EventInfo
             eventId={eventId}
@@ -108,7 +120,9 @@ export default class Main extends Component {
           />
         }} />
 
-        <Route path='/event/:id/edit' render={(props) => {
+        <Route
+          path='/event/:id/edit'
+          render={(props) => {
           const eventId = props.match.params.id;
           const event = this.state.foods.find(event => event.id === parseInt(eventId))
           return <EventManage
