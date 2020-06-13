@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import { getAllCategories } from '../services/categories'
-import { getAllEvents, createEvent, deleteEvent } from '../services/events'
+import { getAllEvents, createEvent, deleteEvent, updateEvent } from '../services/events'
 import Login from '../components/user/Login'
 import SignUp from '../components/user/SignUp'
 import EventList from '../components/events/EventList'
 import ShowCategories from '../components/events/ShowCategories'
 import CreateEvent from '../components/events/CreateEvent'
+import EventInfo from '../components/events/EventInfo'
+import EventManage from '../components/events/EventManage'
 
 
 export default class Main extends Component {
@@ -23,14 +25,14 @@ export default class Main extends Component {
   }
 
 
-// ------- Categories ----------
-  
+  // ------- Categories ----------
+
   getCategories = async () => {
     const categories = await getAllCategories()
     this.setState({ categories })
   }
 
-// ---------- Events -----------
+  // ---------- Events -----------
 
   getEvents = async () => {
     const events = await getAllEvents();
@@ -51,10 +53,17 @@ export default class Main extends Component {
     }));
   }
 
+  putEvent = async (id, eventData) => {
+    const updatedEvent = await updateEvent(id, eventData);
+    this.setState(prevState => ({
+      foods: prevState.events.map(event => event.id === id ? updatedEvent : event)
+    }))
+  }
+
 
   render() {
     return (
-      <div>
+      <main>
 
         <Route path='/user/login' render={(props) => (
           <Login
@@ -89,8 +98,28 @@ export default class Main extends Component {
             postEvent={this.postEvent}
           />
         )} />
-        
-      </div>
+
+        <Route path='/events/:id' render={(props) => {
+          const eventId = props.match.params.id;
+          return <EventInfo
+            eventId={eventId}
+            categories={this.state.categories}
+            currentUser={this.props.currentUser}
+          />
+        }} />
+
+        <Route path='/event/:id/edit' render={(props) => {
+          const eventId = props.match.params.id;
+          const event = this.state.foods.find(event => event.id === parseInt(eventId))
+          return <EventManage
+            {...props}
+            event={event}
+            putEvent={this.putEvent}
+          />
+        }} />
+
+
+      </main>
     )
   }
 }
