@@ -27,5 +27,6 @@ Event.create!(
   location: 'Central Park',
   price: 'Free',
   img_url: 'https://i.imgur.com/x3bNna2.jpg',
-  categories: [@all, @free, @food]
+  categories: [@all, @free, @food],
+  user: @user
 )

@@ -124,7 +124,7 @@ export default class Main extends Component {
           path='/event/:id/edit'
           render={(props) => {
           const eventId = props.match.params.id;
-          const event = this.state.foods.find(event => event.id === parseInt(eventId))
+          const event = this.state.events.find(event => event.id === parseInt(eventId))
           return <EventManage
             {...props}
             event={event}
