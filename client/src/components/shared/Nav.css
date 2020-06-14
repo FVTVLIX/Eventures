@@ -1,0 +1,50 @@
+
+nav {
+  font-family: 'Lato';
+  font-size: 20px;
+  text-align: center;
+}
+
+.categories_link {
+  color: black;
+  margin: 0px 40px;
+}
+
+.events_link {
+  color: black;
+  margin: 0px 40px;
+}
+
+
+.login_link {
+  color: black;
+  /* display: flex; */
+  float: right;
+  font-family: 'Prata';
+  font-size: 20px;
+  margin: 10px 30px 20px 0;
+  text-decoration: none;
+}
+
+.logout_button {
+  display: inline-block;
+  float: right;
+}
+
+.nav_title {
+  color: black;
+  font-family: 'Playfair Display';
+  font-size: 30px;
+  margin: 0px 0 20px 30px;
+  text-decoration: none;
+}
+
+.username {
+  color: black;
+  display: inline-block;
+  /* float: right; */
+  font-family: 'Prata';
+  font-size: 20px;
+  margin: 10px 150px 0px 0;
+  text-decoration: none;
+}

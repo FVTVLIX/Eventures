@@ -5,23 +5,26 @@ import { Link, NavLink } from 'react-router-dom'
 export default function Nav(props)  {
     return (
       <div>
-        <NavLink exact to='/'>Eventures</NavLink>
+        <NavLink
+          className="nav_title"
+          exact to='/'>Eventures</NavLink>
 
         {
           props.currentUser
             ?
             <>
-              {props.currentUser.username}<button onClick={props.handleLogout}>Log Out</button>
+              <p className="username">Welcome, {props.currentUser.username}!</p>
+              <button className="logout_button" onClick={props.handleLogout}>Log Out</button>
             </>
             :
-            <Link to='/user/login'>Login/Register</Link>
+            <Link className="login_link" to='/user/login'>Login/Register</Link>
         }
 
         {
           props.currentUser && (
             <nav>
-              <NavLink to='/events'>Events</NavLink>
-              <NavLink to='/categories'>Categories</NavLink>
+              <NavLink className="events_link" to='/events'>Events</NavLink>
+              <NavLink className="categories_link" to='/categories'>Categories</NavLink>
             </nav>
           )
         }
