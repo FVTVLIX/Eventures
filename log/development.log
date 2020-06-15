@@ -12800,3 +12800,1160 @@ Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.3ms | Allocations: 2554)
 Completed 200 OK in 8ms (Views: 2.3ms | ActiveRecord: 2.4ms | Allocations: 4513)
 
 
+Started GET "/events" for ::1 at 2020-06-15 09:13:48 -0400
+Started GET "/categories" for ::1 at 2020-06-15 09:13:48 -0400
+Started GET "/events/8" for ::1 at 2020-06-15 09:13:48 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#show as HTML
+Processing by CategoriesController#index as HTML
+  [1m[35m (28.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  Parameters: {"id"=>"8"}
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Processing by EventsController#index as HTML
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 47ms (Views: 15.1ms | ActiveRecord: 9.9ms | Allocations: 11783)
+
+
+Completed 200 OK in 36ms (Views: 20.5ms | ActiveRecord: 14.7ms | Allocations: 11644)
+
+
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:56:in `set_event'
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 8]]
+  ↳ app/controllers/events_controller.rb:15:in `show'
+Completed 200 OK in 75ms (Views: 24.4ms | ActiveRecord: 41.0ms | Allocations: 21054)
+
+
+Started POST "/auth/login" for ::1 at 2020-06-15 09:51:08 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"admin", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"admin", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 235ms (Views: 1.0ms | ActiveRecord: 7.6ms | Allocations: 6609)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (5.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (45.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Eventures_development"[0m
+  [1m[35m (35.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Eventures_test"[0m
+  [1m[35m (127.8ms)[0m  [1m[35mCREATE DATABASE "Eventures_development" ENCODING = 'unicode'[0m
+  [1m[35m (58.4ms)[0m  [1m[35mCREATE DATABASE "Eventures_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories_events" CASCADE[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "categories_events" ("category_id" bigint NOT NULL, "event_id" bigint NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying, "hosted_by" character varying, "date" character varying, "location" character varying, "price" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "img_url" character varying, "user_id" bigint NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_events_on_user_id" ON "events"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mALTER TABLE "events" ADD CONSTRAINT "fk_rails_0cb5590091"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200613201711)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200609161925),
+(20200609162344),
+(20200609162438),
+(20200609164951),
+(20200610144029);
+
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-15 14:11:38.827593"], ["updated_at", "2020-06-15 14:11:38.827593"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b6e5f3e9407f3c0bebf7e171348d60ae22980f1d"], ["created_at", "2020-06-15 14:11:38.834039"], ["updated_at", "2020-06-15 14:11:38.834039"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (11.6ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories_events" CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "categories_events" ("category_id" bigint NOT NULL, "event_id" bigint NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying, "hosted_by" character varying, "date" character varying, "location" character varying, "price" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "img_url" character varying, "user_id" bigint NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_events_on_user_id" ON "events"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "events" ADD CONSTRAINT "fk_rails_0cb5590091"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200613201711)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200609161925),
+(20200609162344),
+(20200609162438),
+(20200609164951),
+(20200610144029);
+
+[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-15 14:11:38.894698"], ["updated_at", "2020-06-15 14:11:38.894698"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-06-15 14:11:38.899385"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b6e5f3e9407f3c0bebf7e171348d60ae22980f1d"], ["created_at", "2020-06-15 14:11:38.903873"], ["updated_at", "2020-06-15 14:11:38.903873"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "admin"], ["email", "admin@email.com"], ["password_digest", "$2a$12$sCzV7AR5s5Kt34e8jOgJXuDfVYH11pSSfsfvk.FZTSRbRa8PaFVv2"], ["created_at", "2020-06-15 14:11:39.181357"], ["updated_at", "2020-06-15 14:11:39.181357"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "All"], ["created_at", "2020-06-15 14:11:39.187610"], ["updated_at", "2020-06-15 14:11:39.187610"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Free"], ["created_at", "2020-06-15 14:11:39.190648"], ["updated_at", "2020-06-15 14:11:39.190648"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Music"], ["created_at", "2020-06-15 14:11:39.194370"], ["updated_at", "2020-06-15 14:11:39.194370"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Food & Drink"], ["created_at", "2020-06-15 14:11:39.197589"], ["updated_at", "2020-06-15 14:11:39.197589"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "This Weekend"], ["created_at", "2020-06-15 14:11:39.200569"], ["updated_at", "2020-06-15 14:11:39.200569"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Charity & Causes"], ["created_at", "2020-06-15 14:11:39.203575"], ["updated_at", "2020-06-15 14:11:39.203575"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (1.0ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "12th Annual Food Festival"], ["hosted_by", "NYC"], ["date", "July 20th, 2020 7:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:11:39.241310"], ["updated_at", "2020-06-15 14:11:39.241310"], ["img_url", "https://i.imgur.com/x3bNna2.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 2], ["event_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "4th of July Fest"], ["hosted_by", "Party People"], ["date", "July 4th, 2020 4:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:11:39.251528"], ["updated_at", "2020-06-15 14:11:39.251528"], ["img_url", "https://i.imgur.com/xafDgEA.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 2], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", ""], ["hosted_by", "Dre"], ["date", "July 10th, 2020 7:00PM EST"], ["location", "My Place"], ["price", "$1.00"], ["created_at", "2020-06-15 14:11:39.271072"], ["updated_at", "2020-06-15 14:11:39.271072"], ["img_url", "https://i.imgur.com/b2COSYO.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 5], ["event_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (36.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Eventures_development"[0m
+  [1m[35m (30.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Eventures_test"[0m
+  [1m[35m (57.8ms)[0m  [1m[35mCREATE DATABASE "Eventures_development" ENCODING = 'unicode'[0m
+  [1m[35m (53.8ms)[0m  [1m[35mCREATE DATABASE "Eventures_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories_events" CASCADE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "categories_events" ("category_id" bigint NOT NULL, "event_id" bigint NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying, "hosted_by" character varying, "date" character varying, "location" character varying, "price" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "img_url" character varying, "user_id" bigint NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_events_on_user_id" ON "events"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "events" ADD CONSTRAINT "fk_rails_0cb5590091"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200613201711)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200609161925),
+(20200609162344),
+(20200609162438),
+(20200609164951),
+(20200610144029);
+
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-15 14:13:17.406375"], ["updated_at", "2020-06-15 14:13:17.406375"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b6e5f3e9407f3c0bebf7e171348d60ae22980f1d"], ["created_at", "2020-06-15 14:13:17.415067"], ["updated_at", "2020-06-15 14:13:17.415067"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories_events" CASCADE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "categories_events" ("category_id" bigint NOT NULL, "event_id" bigint NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying, "hosted_by" character varying, "date" character varying, "location" character varying, "price" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "img_url" character varying, "user_id" bigint NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_events_on_user_id" ON "events"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "events" ADD CONSTRAINT "fk_rails_0cb5590091"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200613201711)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200609161925),
+(20200609162344),
+(20200609162438),
+(20200609164951),
+(20200610144029);
+
+[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-15 14:13:17.474367"], ["updated_at", "2020-06-15 14:13:17.474367"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-06-15 14:13:17.478682"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b6e5f3e9407f3c0bebf7e171348d60ae22980f1d"], ["created_at", "2020-06-15 14:13:17.482716"], ["updated_at", "2020-06-15 14:13:17.482716"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "admin"], ["email", "admin@email.com"], ["password_digest", "$2a$12$UKNxYRVhx2E3weFhBf7ZKOzUBe.lYbRmV33vI58kScgsoQw7xAxdW"], ["created_at", "2020-06-15 14:13:17.737648"], ["updated_at", "2020-06-15 14:13:17.737648"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "All"], ["created_at", "2020-06-15 14:13:17.743763"], ["updated_at", "2020-06-15 14:13:17.743763"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Free"], ["created_at", "2020-06-15 14:13:17.746941"], ["updated_at", "2020-06-15 14:13:17.746941"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Music"], ["created_at", "2020-06-15 14:13:17.749886"], ["updated_at", "2020-06-15 14:13:17.749886"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Food & Drink"], ["created_at", "2020-06-15 14:13:17.753210"], ["updated_at", "2020-06-15 14:13:17.753210"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "This Weekend"], ["created_at", "2020-06-15 14:13:17.756732"], ["updated_at", "2020-06-15 14:13:17.756732"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Charity & Causes"], ["created_at", "2020-06-15 14:13:17.759470"], ["updated_at", "2020-06-15 14:13:17.759470"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "12th Annual Food Festival"], ["hosted_by", "NYC"], ["date", "July 20th, 2020 7:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:13:17.778078"], ["updated_at", "2020-06-15 14:13:17.778078"], ["img_url", "https://i.imgur.com/x3bNna2.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 2], ["event_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "4th of July Fest"], ["hosted_by", "Party People"], ["date", "July 4th, 2020 4:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:13:17.798053"], ["updated_at", "2020-06-15 14:13:17.798053"], ["img_url", "https://i.imgur.com/xafDgEA.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 2], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Backyard BBQ Party"], ["hosted_by", "Dre"], ["date", "July 10th, 2020 7:00PM EST"], ["location", "My Place"], ["price", "$1.00"], ["created_at", "2020-06-15 14:13:17.807036"], ["updated_at", "2020-06-15 14:13:17.807036"], ["img_url", "https://i.imgur.com/b2COSYO.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 5], ["event_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Charity Poker Night"], ["hosted_by", "Elon Musk"], ["date", "July 12th, 2020 11:00PM EST"], ["location", ""], ["price", "$1,000,000.00"], ["created_at", "2020-06-15 14:13:17.823679"], ["updated_at", "2020-06-15 14:13:17.823679"], ["img_url", "https://images.unsplash.com/photo-1446669052213-5dcff53f1f3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2253&q=80"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 4]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 4]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 5], ["event_id", 4]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 6], ["event_id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Pool Party"], ["hosted_by", "Pool Party People"], ["date", "August 6th, 2020 11:00AM EST"], ["location", "Brooklyn"], ["price", "Free"], ["created_at", "2020-06-15 14:13:17.834372"], ["updated_at", "2020-06-15 14:13:17.834372"], ["img_url", "https://i.imgur.com/CSBfEGZ.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 5]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 2], ["event_id", 5]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 5]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 5]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (34.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Eventures_development"[0m
+  [1m[35m (32.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Eventures_test"[0m
+  [1m[35m (54.6ms)[0m  [1m[35mCREATE DATABASE "Eventures_development" ENCODING = 'unicode'[0m
+  [1m[35m (59.2ms)[0m  [1m[35mCREATE DATABASE "Eventures_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories_events" CASCADE[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "categories_events" ("category_id" bigint NOT NULL, "event_id" bigint NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying, "hosted_by" character varying, "date" character varying, "location" character varying, "price" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "img_url" character varying, "user_id" bigint NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_events_on_user_id" ON "events"  ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "events" ADD CONSTRAINT "fk_rails_0cb5590091"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200613201711)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200609161925),
+(20200609162344),
+(20200609162438),
+(20200609164951),
+(20200610144029);
+
+[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-15 14:13:55.129342"], ["updated_at", "2020-06-15 14:13:55.129342"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b6e5f3e9407f3c0bebf7e171348d60ae22980f1d"], ["created_at", "2020-06-15 14:13:55.138086"], ["updated_at", "2020-06-15 14:13:55.138086"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories_events" CASCADE[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "categories_events" ("category_id" bigint NOT NULL, "event_id" bigint NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying, "hosted_by" character varying, "date" character varying, "location" character varying, "price" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "img_url" character varying, "user_id" bigint NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_events_on_user_id" ON "events"  ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "events" ADD CONSTRAINT "fk_rails_0cb5590091"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200613201711)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200609161925),
+(20200609162344),
+(20200609162438),
+(20200609164951),
+(20200610144029);
+
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-15 14:13:55.195213"], ["updated_at", "2020-06-15 14:13:55.195213"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-06-15 14:13:55.200872"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b6e5f3e9407f3c0bebf7e171348d60ae22980f1d"], ["created_at", "2020-06-15 14:13:55.205775"], ["updated_at", "2020-06-15 14:13:55.205775"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "admin"], ["email", "admin@email.com"], ["password_digest", "$2a$12$qvwk23QqccYgXcp7RcjQkOTbASbaf0FrbrTzy3ioXYTjXzjYwSqZG"], ["created_at", "2020-06-15 14:13:55.472393"], ["updated_at", "2020-06-15 14:13:55.472393"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "All"], ["created_at", "2020-06-15 14:13:55.479039"], ["updated_at", "2020-06-15 14:13:55.479039"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Free"], ["created_at", "2020-06-15 14:13:55.482903"], ["updated_at", "2020-06-15 14:13:55.482903"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Music"], ["created_at", "2020-06-15 14:13:55.486851"], ["updated_at", "2020-06-15 14:13:55.486851"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Food & Drink"], ["created_at", "2020-06-15 14:13:55.489820"], ["updated_at", "2020-06-15 14:13:55.489820"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "This Weekend"], ["created_at", "2020-06-15 14:13:55.493018"], ["updated_at", "2020-06-15 14:13:55.493018"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Charity & Causes"], ["created_at", "2020-06-15 14:13:55.496160"], ["updated_at", "2020-06-15 14:13:55.496160"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "12th Annual Food Festival"], ["hosted_by", "NYC"], ["date", "July 20th, 2020 7:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:13:55.527541"], ["updated_at", "2020-06-15 14:13:55.527541"], ["img_url", "https://i.imgur.com/x3bNna2.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.4ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 2], ["event_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "4th of July Fest"], ["hosted_by", "Party People"], ["date", "July 4th, 2020 4:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:13:55.537724"], ["updated_at", "2020-06-15 14:13:55.537724"], ["img_url", "https://i.imgur.com/xafDgEA.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 2], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Backyard BBQ Party"], ["hosted_by", "Dre"], ["date", "July 10th, 2020 7:00PM EST"], ["location", "My Place"], ["price", "$1.00"], ["created_at", "2020-06-15 14:13:55.546884"], ["updated_at", "2020-06-15 14:13:55.546884"], ["img_url", "https://i.imgur.com/b2COSYO.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 5], ["event_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Charity Poker Night"], ["hosted_by", "Elon Musk"], ["date", "July 12th, 2020 11:00PM EST"], ["location", ""], ["price", "$1,000,000.00"], ["created_at", "2020-06-15 14:13:55.562420"], ["updated_at", "2020-06-15 14:13:55.562420"], ["img_url", "https://images.unsplash.com/photo-1446669052213-5dcff53f1f3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2253&q=80"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 4]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 4]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 5], ["event_id", 4]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 6], ["event_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Pool Party"], ["hosted_by", "Pool Party People"], ["date", "August 6th, 2020 11:00AM EST"], ["location", "Brooklyn"], ["price", "Free"], ["created_at", "2020-06-15 14:13:55.573886"], ["updated_at", "2020-06-15 14:13:55.573886"], ["img_url", "https://i.imgur.com/CSBfEGZ.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 5]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 2], ["event_id", 5]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 5]]
+  [1m[36mEvent::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 5]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "4th Ann. Beer Fest"], ["hosted_by", "Miller Coors"], ["date", "July 1st, 2020 1:00PM EST"], ["location", "Manhattan"], ["price", "$20.00"], ["created_at", "2020-06-15 14:13:55.585081"], ["updated_at", "2020-06-15 14:13:55.585081"], ["img_url", "https://images.unsplash.com/photo-1575037614876-c38a4d44f5b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 6]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 6]]
+  [1m[36mEvent::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 6]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 5], ["event_id", 6]]
+  [1m[36mEvent::HABTM_Categories Create (0.4ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 6], ["event_id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.5ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 1]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 2]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 3]]
+  [1m[36mEvent Destroy (0.3ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 4]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.4ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 5]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 6]]
+  [1m[36mEvent Destroy (0.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 1]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 2]]
+  [1m[36mCategory Destroy (0.1ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.1ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 3]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 4]]
+  [1m[36mCategory Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.1ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 5]]
+  [1m[36mCategory Destroy (0.1ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.1ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 6]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "admin"], ["email", "admin@email.com"], ["password_digest", "$2a$12$iYcyQWFXW7iDKYDxkKXf9.GT2NayX140K/RXeHO8K3Oy1svFC3tHq"], ["created_at", "2020-06-15 14:15:39.729101"], ["updated_at", "2020-06-15 14:15:39.729101"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "All"], ["created_at", "2020-06-15 14:15:39.731910"], ["updated_at", "2020-06-15 14:15:39.731910"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Free"], ["created_at", "2020-06-15 14:15:39.735181"], ["updated_at", "2020-06-15 14:15:39.735181"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Music"], ["created_at", "2020-06-15 14:15:39.737912"], ["updated_at", "2020-06-15 14:15:39.737912"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Food & Drink"], ["created_at", "2020-06-15 14:15:39.740804"], ["updated_at", "2020-06-15 14:15:39.740804"]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "This Weekend"], ["created_at", "2020-06-15 14:15:39.743414"], ["updated_at", "2020-06-15 14:15:39.743414"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Charity & Causes"], ["created_at", "2020-06-15 14:15:39.746115"], ["updated_at", "2020-06-15 14:15:39.746115"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.4ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "12th Annual Food Festival"], ["hosted_by", "NYC"], ["date", "July 20th, 2020 7:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:15:39.752900"], ["updated_at", "2020-06-15 14:15:39.752900"], ["img_url", "https://i.imgur.com/x3bNna2.jpg"], ["user_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 7], ["event_id", 7]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 8], ["event_id", 7]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 10], ["event_id", 7]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "4th of July Fest"], ["hosted_by", "Party People"], ["date", "July 4th, 2020 4:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:15:39.761558"], ["updated_at", "2020-06-15 14:15:39.761558"], ["img_url", "https://i.imgur.com/xafDgEA.jpg"], ["user_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 7], ["event_id", 8]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 8], ["event_id", 8]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 10], ["event_id", 8]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 9], ["event_id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Backyard BBQ Party"], ["hosted_by", "Dre"], ["date", "July 10th, 2020 7:00PM EST"], ["location", "My Place"], ["price", "$1.00"], ["created_at", "2020-06-15 14:15:39.770555"], ["updated_at", "2020-06-15 14:15:39.770555"], ["img_url", "https://i.imgur.com/b2COSYO.jpg"], ["user_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 7], ["event_id", 9]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 10], ["event_id", 9]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 9], ["event_id", 9]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 11], ["event_id", 9]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Charity Poker Night"], ["hosted_by", "Elon Musk"], ["date", "July 12th, 2020 11:00PM EST"], ["location", ""], ["price", "$1,000,000.00"], ["created_at", "2020-06-15 14:15:39.787904"], ["updated_at", "2020-06-15 14:15:39.787904"], ["img_url", "https://images.unsplash.com/photo-1446669052213-5dcff53f1f3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2253&q=80"], ["user_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 7], ["event_id", 10]]
+  [1m[36mEvent::HABTM_Categories Create (0.4ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 10], ["event_id", 10]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 11], ["event_id", 10]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 12], ["event_id", 10]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Pool Party"], ["hosted_by", "Pool Party People"], ["date", "August 6th, 2020 11:00AM EST"], ["location", "Brooklyn"], ["price", "Free"], ["created_at", "2020-06-15 14:15:39.816633"], ["updated_at", "2020-06-15 14:15:39.816633"], ["img_url", "https://i.imgur.com/CSBfEGZ.jpg"], ["user_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 7], ["event_id", 11]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 8], ["event_id", 11]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 10], ["event_id", 11]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 9], ["event_id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "4th Ann. Beer Fest"], ["hosted_by", "Miller Coors"], ["date", "July 1st, 2020 1:00PM EST"], ["location", "Manhattan"], ["price", "$20.00"], ["created_at", "2020-06-15 14:15:39.825475"], ["updated_at", "2020-06-15 14:15:39.825475"], ["img_url", "https://images.unsplash.com/photo-1575037614876-c38a4d44f5b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"], ["user_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 7], ["event_id", 12]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 10], ["event_id", 12]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 9], ["event_id", 12]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 11], ["event_id", 12]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 12], ["event_id", 12]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.4ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 7]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 7]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 8]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 9]]
+  [1m[36mEvent Destroy (0.4ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 10]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.4ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 11]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 12]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.1ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 7]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 7]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 8]]
+  [1m[36mCategory Destroy (0.1ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 9]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 10]]
+  [1m[36mCategory Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 11]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.4ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 12]]
+  [1m[36mCategory Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "admin"], ["email", "admin@email.com"], ["password_digest", "$2a$12$Ig70WbGG52atj0s6D1irLuBXVmYtAz4ypta1ZDG7EOXFiv3KT1NCS"], ["created_at", "2020-06-15 14:18:02.427583"], ["updated_at", "2020-06-15 14:18:02.427583"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "All"], ["created_at", "2020-06-15 14:18:02.430399"], ["updated_at", "2020-06-15 14:18:02.430399"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Free"], ["created_at", "2020-06-15 14:18:02.434268"], ["updated_at", "2020-06-15 14:18:02.434268"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Music"], ["created_at", "2020-06-15 14:18:02.437254"], ["updated_at", "2020-06-15 14:18:02.437254"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Food & Drink"], ["created_at", "2020-06-15 14:18:02.439945"], ["updated_at", "2020-06-15 14:18:02.439945"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "This Weekend"], ["created_at", "2020-06-15 14:18:02.443412"], ["updated_at", "2020-06-15 14:18:02.443412"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Charity & Causes"], ["created_at", "2020-06-15 14:18:02.446274"], ["updated_at", "2020-06-15 14:18:02.446274"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.4ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "12th Annual Food Festival"], ["hosted_by", "NYC"], ["date", "July 20th, 2020 7:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:18:02.453260"], ["updated_at", "2020-06-15 14:18:02.453260"], ["img_url", "https://i.imgur.com/x3bNna2.jpg"], ["user_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 13], ["event_id", 13]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 14], ["event_id", 13]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 16], ["event_id", 13]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.5ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 13]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 13]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 13]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 13]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 14]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 14]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 15]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 15]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 16]]
+  [1m[36mCategory Destroy (0.9ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 16]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 17]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 17]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 18]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 18]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "admin"], ["email", "admin@email.com"], ["password_digest", "$2a$12$s70HuvHaN.cP8yVmMRb2XuTLPNN0rykF9NDAS6OiUrOPqmtiwz9/W"], ["created_at", "2020-06-15 14:18:19.470630"], ["updated_at", "2020-06-15 14:18:19.470630"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "All"], ["created_at", "2020-06-15 14:18:19.473702"], ["updated_at", "2020-06-15 14:18:19.473702"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Free"], ["created_at", "2020-06-15 14:18:19.476907"], ["updated_at", "2020-06-15 14:18:19.476907"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Music"], ["created_at", "2020-06-15 14:18:19.479462"], ["updated_at", "2020-06-15 14:18:19.479462"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Food & Drink"], ["created_at", "2020-06-15 14:18:19.482656"], ["updated_at", "2020-06-15 14:18:19.482656"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "This Weekend"], ["created_at", "2020-06-15 14:18:19.485677"], ["updated_at", "2020-06-15 14:18:19.485677"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Charity & Causes"], ["created_at", "2020-06-15 14:18:19.489330"], ["updated_at", "2020-06-15 14:18:19.489330"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "12th Annual Food Festival"], ["hosted_by", "NYC"], ["date", "July 20th, 2020 7:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:18:19.496614"], ["updated_at", "2020-06-15 14:18:19.496614"], ["img_url", "https://i.imgur.com/x3bNna2.jpg"], ["user_id", 4]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 19], ["event_id", 14]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 20], ["event_id", 14]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 22], ["event_id", 14]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "4th of July Fest"], ["hosted_by", "Party People"], ["date", "July 4th, 2020 4:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:18:19.506572"], ["updated_at", "2020-06-15 14:18:19.506572"], ["img_url", "https://i.imgur.com/xafDgEA.jpg"], ["user_id", 4]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 19], ["event_id", 15]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 20], ["event_id", 15]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 22], ["event_id", 15]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 21], ["event_id", 15]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.4ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 14]]
+  [1m[36mEvent Destroy (0.4ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 14]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent::HABTM_Categories Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 15]]
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 15]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 19]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 19]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 20]]
+  [1m[36mCategory Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 20]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.1ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 21]]
+  [1m[36mCategory Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 21]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 22]]
+  [1m[36mCategory Destroy (0.1ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 22]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 23]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 23]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory::HABTM_Events Destroy (0.1ms)[0m  [1m[31mDELETE FROM "categories_events" WHERE "categories_events"."category_id" = $1[0m  [["category_id", 24]]
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 24]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "admin"], ["email", "admin@email.com"], ["password_digest", "$2a$12$c4t7LFCWkmXTXxkcKRTnSeFnGPGv.UhsnGFxVSGEhT.yLtkh5/U.a"], ["created_at", "2020-06-15 14:18:44.204120"], ["updated_at", "2020-06-15 14:18:44.204120"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "All"], ["created_at", "2020-06-15 14:18:44.206910"], ["updated_at", "2020-06-15 14:18:44.206910"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Free"], ["created_at", "2020-06-15 14:18:44.210291"], ["updated_at", "2020-06-15 14:18:44.210291"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Music"], ["created_at", "2020-06-15 14:18:44.213098"], ["updated_at", "2020-06-15 14:18:44.213098"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Food & Drink"], ["created_at", "2020-06-15 14:18:44.215919"], ["updated_at", "2020-06-15 14:18:44.215919"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "This Weekend"], ["created_at", "2020-06-15 14:18:44.219000"], ["updated_at", "2020-06-15 14:18:44.219000"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Charity & Causes"], ["created_at", "2020-06-15 14:18:44.222511"], ["updated_at", "2020-06-15 14:18:44.222511"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.4ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "12th Annual Food Festival"], ["hosted_by", "NYC"], ["date", "July 20th, 2020 7:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:18:44.229307"], ["updated_at", "2020-06-15 14:18:44.229307"], ["img_url", "https://i.imgur.com/x3bNna2.jpg"], ["user_id", 5]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 25], ["event_id", 16]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 26], ["event_id", 16]]
+  [1m[36mEvent::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 28], ["event_id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "4th of July Fest"], ["hosted_by", "Party People"], ["date", "July 4th, 2020 4:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:18:44.238539"], ["updated_at", "2020-06-15 14:18:44.238539"], ["img_url", "https://i.imgur.com/xafDgEA.jpg"], ["user_id", 5]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 25], ["event_id", 17]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 26], ["event_id", 17]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 28], ["event_id", 17]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 27], ["event_id", 17]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Backyard BBQ Party"], ["hosted_by", "Dre"], ["date", "July 10th, 2020 7:00PM EST"], ["location", "My Place"], ["price", "$1.00"], ["created_at", "2020-06-15 14:18:44.248106"], ["updated_at", "2020-06-15 14:18:44.248106"], ["img_url", "https://i.imgur.com/b2COSYO.jpg"], ["user_id", 5]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 25], ["event_id", 18]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 28], ["event_id", 18]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 27], ["event_id", 18]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 29], ["event_id", 18]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (30.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Eventures_development"[0m
+  [1m[35m (30.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Eventures_test"[0m
+  [1m[35m (54.7ms)[0m  [1m[35mCREATE DATABASE "Eventures_development" ENCODING = 'unicode'[0m
+  [1m[35m (62.7ms)[0m  [1m[35mCREATE DATABASE "Eventures_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories_events" CASCADE[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "categories_events" ("category_id" bigint NOT NULL, "event_id" bigint NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying, "hosted_by" character varying, "date" character varying, "location" character varying, "price" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "img_url" character varying, "user_id" bigint NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_events_on_user_id" ON "events"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "events" ADD CONSTRAINT "fk_rails_0cb5590091"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200613201711)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200609161925),
+(20200609162344),
+(20200609162438),
+(20200609164951),
+(20200610144029);
+
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-15 14:19:32.242238"], ["updated_at", "2020-06-15 14:19:32.242238"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b6e5f3e9407f3c0bebf7e171348d60ae22980f1d"], ["created_at", "2020-06-15 14:19:32.248640"], ["updated_at", "2020-06-15 14:19:32.248640"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories_events" CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "categories_events" ("category_id" bigint NOT NULL, "event_id" bigint NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying, "hosted_by" character varying, "date" character varying, "location" character varying, "price" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "img_url" character varying, "user_id" bigint NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_events_on_user_id" ON "events"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "events" ADD CONSTRAINT "fk_rails_0cb5590091"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200613201711)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200609161925),
+(20200609162344),
+(20200609162438),
+(20200609164951),
+(20200610144029);
+
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-06-15 14:19:32.311938"], ["updated_at", "2020-06-15 14:19:32.311938"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-06-15 14:19:32.316847"], ["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b6e5f3e9407f3c0bebf7e171348d60ae22980f1d"], ["created_at", "2020-06-15 14:19:32.323206"], ["updated_at", "2020-06-15 14:19:32.323206"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "admin"], ["email", "admin@email.com"], ["password_digest", "$2a$12$EYMYf8aPPBDMOLWrxfNQz.MvQOWXQmiEUkG3J07Eth1rsDQbQjIwi"], ["created_at", "2020-06-15 14:19:32.592429"], ["updated_at", "2020-06-15 14:19:32.592429"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "All"], ["created_at", "2020-06-15 14:19:32.599314"], ["updated_at", "2020-06-15 14:19:32.599314"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Free"], ["created_at", "2020-06-15 14:19:32.603654"], ["updated_at", "2020-06-15 14:19:32.603654"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Music"], ["created_at", "2020-06-15 14:19:32.606825"], ["updated_at", "2020-06-15 14:19:32.606825"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Food & Drink"], ["created_at", "2020-06-15 14:19:32.609855"], ["updated_at", "2020-06-15 14:19:32.609855"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "This Weekend"], ["created_at", "2020-06-15 14:19:32.612594"], ["updated_at", "2020-06-15 14:19:32.612594"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Charity & Causes"], ["created_at", "2020-06-15 14:19:32.615766"], ["updated_at", "2020-06-15 14:19:32.615766"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (1.1ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "12th Annual Food Festival"], ["hosted_by", "NYC"], ["date", "July 20th, 2020 7:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:19:32.647464"], ["updated_at", "2020-06-15 14:19:32.647464"], ["img_url", "https://i.imgur.com/x3bNna2.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 2], ["event_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "4th of July Fest"], ["hosted_by", "Party People"], ["date", "July 4th, 2020 4:00PM EST"], ["location", "Central Park"], ["price", "Free"], ["created_at", "2020-06-15 14:19:32.658049"], ["updated_at", "2020-06-15 14:19:32.658049"], ["img_url", "https://i.imgur.com/xafDgEA.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 2], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 2]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Backyard BBQ Party"], ["hosted_by", "Dre"], ["date", "July 10th, 2020 7:00PM EST"], ["location", "My Place"], ["price", "$1.00"], ["created_at", "2020-06-15 14:19:32.667809"], ["updated_at", "2020-06-15 14:19:32.667809"], ["img_url", "https://i.imgur.com/b2COSYO.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 3]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 5], ["event_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Charity Poker Night"], ["hosted_by", "Elon Musk"], ["date", "July 12th, 2020 11:00PM EST"], ["location", "His House"], ["price", "$1,000,000.00"], ["created_at", "2020-06-15 14:19:32.678113"], ["updated_at", "2020-06-15 14:19:32.678113"], ["img_url", "https://images.unsplash.com/photo-1446669052213-5dcff53f1f3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2253&q=80"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 4]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 4]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 5], ["event_id", 4]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 6], ["event_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Pool Party"], ["hosted_by", "Pool Party People"], ["date", "August 6th, 2020 11:00AM EST"], ["location", "Brooklyn"], ["price", "Free"], ["created_at", "2020-06-15 14:19:32.686961"], ["updated_at", "2020-06-15 14:19:32.686961"], ["img_url", "https://i.imgur.com/CSBfEGZ.jpg"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 5]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 2], ["event_id", 5]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 5]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "hosted_by", "date", "location", "price", "created_at", "updated_at", "img_url", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "4th Ann. Beer Fest"], ["hosted_by", "Miller Coors"], ["date", "July 1st, 2020 1:00PM EST"], ["location", "Manhattan"], ["price", "$20.00"], ["created_at", "2020-06-15 14:19:32.697036"], ["updated_at", "2020-06-15 14:19:32.697036"], ["img_url", "https://images.unsplash.com/photo-1575037614876-c38a4d44f5b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"], ["user_id", 1]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 1], ["event_id", 6]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 4], ["event_id", 6]]
+  [1m[36mEvent::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 3], ["event_id", 6]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 5], ["event_id", 6]]
+  [1m[36mEvent::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_events" ("category_id", "event_id") VALUES ($1, $2)[0m  [["category_id", 6], ["event_id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/categories" for ::1 at 2020-06-15 10:19:55 -0400
+Started GET "/events" for ::1 at 2020-06-15 10:19:55 -0400
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#index as HTML
+Processing by CategoriesController#index as HTML
+  [1m[36mEvent Load (20.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 71ms (Views: 30.2ms | ActiveRecord: 25.2ms | Allocations: 14099)
+
+
+  [1m[36mCategory Load (35.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+Completed 200 OK in 66ms (Views: 6.7ms | ActiveRecord: 40.5ms | Allocations: 15339)
+
+
+Started POST "/auth/login" for ::1 at 2020-06-15 10:20:49 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"admin", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"admin", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 242ms (Views: 0.3ms | ActiveRecord: 4.8ms | Allocations: 6764)
+
+
+Started GET "/categories" for ::1 at 2020-06-15 10:23:40 -0400
+Started GET "/events" for ::1 at 2020-06-15 10:23:40 -0400
+Processing by CategoriesController#index as HTML
+Processing by EventsController#index as HTML
+  [1m[36mCategory Load (29.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+Completed 200 OK in 36ms (Views: 6.5ms | ActiveRecord: 29.6ms | Allocations: 2080)
+
+
+  [1m[36mEvent Load (93.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 107ms (Views: 13.8ms | ActiveRecord: 93.1ms | Allocations: 3597)
+
+
+Started GET "/categories" for ::1 at 2020-06-15 10:23:42 -0400
+Started GET "/events" for ::1 at 2020-06-15 10:23:42 -0400
+Processing by CategoriesController#index as HTML
+Processing by EventsController#index as HTML
+  [1m[36mCategory Load (1.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 1.6ms | Allocations: 1591)
+
+
+  [1m[36mEvent Load (4.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 10ms (Views: 4.9ms | ActiveRecord: 4.3ms | Allocations: 3609)
+
+
+Started GET "/events" for ::1 at 2020-06-15 10:23:46 -0400
+Started GET "/categories" for ::1 at 2020-06-15 10:23:46 -0400
+Processing by EventsController#index as HTML
+Processing by CategoriesController#index as HTML
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.5ms | Allocations: 2773)
+
+
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.2ms | Allocations: 3372)
+
+
+Started GET "/categories" for ::1 at 2020-06-15 10:23:50 -0400
+Started GET "/events" for ::1 at 2020-06-15 10:23:50 -0400
+Processing by CategoriesController#index as HTML
+Processing by EventsController#index as HTML
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 1.1ms | Allocations: 2087)
+
+
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.6ms | Allocations: 3564)
+
+
+Started GET "/categories" for ::1 at 2020-06-15 10:23:54 -0400
+Started GET "/events" for ::1 at 2020-06-15 10:23:54 -0400
+Processing by CategoriesController#index as HTML
+Processing by EventsController#index as HTML
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.5ms | Allocations: 1596)
+
+
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.7ms | Allocations: 3590)
+
+
+Started GET "/categories" for ::1 at 2020-06-15 10:23:59 -0400
+Started GET "/events" for ::1 at 2020-06-15 10:23:59 -0400
+Processing by CategoriesController#index as HTML
+Processing by EventsController#index as HTML
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.6ms | Allocations: 2073)
+
+
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.6ms | Allocations: 3522)
+
+
+Started GET "/categories" for ::1 at 2020-06-15 10:24:01 -0400
+Started GET "/events" for ::1 at 2020-06-15 10:24:01 -0400
+Processing by CategoriesController#index as HTML
+Processing by EventsController#index as HTML
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.6ms | Allocations: 2238)
+
+
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.3ms | Allocations: 3375)
+
+
+Started GET "/categories" for ::1 at 2020-06-15 10:24:03 -0400
+Started GET "/events" for ::1 at 2020-06-15 10:24:03 -0400
+Processing by CategoriesController#index as HTML
+Processing by EventsController#index as HTML
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.4ms | Allocations: 1597)
+
+
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 1.0ms | Allocations: 3375)
+
+
+Started GET "/categories" for ::1 at 2020-06-15 10:24:07 -0400
+Started GET "/events" for ::1 at 2020-06-15 10:24:07 -0400
+Processing by EventsController#index as HTML
+Processing by CategoriesController#index as HTML
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.6ms | Allocations: 2773)
+
+
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.3ms | Allocations: 3529)
+
+
+Started GET "/events/3" for ::1 at 2020-06-15 10:24:19 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:56:in `set_event'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 3]]
+  ↳ app/controllers/events_controller.rb:15:in `show'
+Completed 200 OK in 27ms (Views: 22.5ms | ActiveRecord: 2.5ms | Allocations: 6884)
+
+
+Started POST "/auth/login" for ::1 at 2020-06-15 10:25:03 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"admin", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"admin", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 219ms (Views: 0.4ms | ActiveRecord: 1.5ms | Allocations: 1034)
+
+
+Started GET "/categories/13/events/8" for ::1 at 2020-06-15 10:26:59 -0400
+Processing by EventsController#event_to_category as HTML
+  Parameters: {"category_id"=>"13", "event_id"=>"8"}
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:45:in `event_to_category'
+Completed 404 Not Found in 5ms (ActiveRecord: 1.0ms | Allocations: 777)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Category with 'id'=13):
+  
+app/controllers/events_controller.rb:45:in `event_to_category'
+Started GET "/categories" for ::1 at 2020-06-15 10:27:05 -0400
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 1488)
+
+

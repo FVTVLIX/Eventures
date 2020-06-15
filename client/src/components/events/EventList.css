@@ -20,7 +20,7 @@ a {
 .event_date {
   color: orange;
   font-family: 'Staatliches';
-  font-size: 30px;
+  font-size: 15px;
   margin: 5px 0 0 10px;
 }
 
@@ -31,7 +31,7 @@ a {
 .event_title {
   color: black;
   font-family: 'Staatliches';
-  font-size: 25px;
+  font-size: 20px;
   letter-spacing: .5px;
   margin: 5px 0 15px 0;
 }
