@@ -142,9 +142,9 @@ export default class CreateEvent extends Component {
         </div>
 
         <br />
-
+        
         {newCategories.map(category => (
-          <p>{category.name}</p>
+          <p className="added_category">{category.name}</p>
             ))}
 
         <select
@@ -160,6 +160,7 @@ export default class CreateEvent extends Component {
 
         </select>
         <button
+          className="add_cat_button"
           onClick={this.addCategory}
         >Add</button>
 

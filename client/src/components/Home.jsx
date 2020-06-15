@@ -16,11 +16,18 @@ export default function Home(props) {
           </>
           :
           <>
+            <img
+              alt="nav_image"
+              className="nav_image"
+              src='https://i.imgur.com/csb7QW9.jpg' />
+            
             <h2 className="home_banner">Upcoming Events</h2>
+
             {
               events.map((event) => (
                 <div className="home_container">
                   <img
+                    alt="home_image"
                     className="home_image"
                     src={event.img_url} />
                   <p

@@ -1,0 +1,57 @@
+form {
+  text-align: center;
+}
+
+input {
+  height: 20px;
+  margin: 20px 0;
+}
+
+.edit_banner {
+  font-family: 'Staatliches';
+  font-size: 45px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.edit_title {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+}
+
+.edit_host {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+}
+
+.edit_date {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+}
+
+.edit_location {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+}
+
+.edit_price {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+}
+
+.edit_image {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+}
+
+.edit_submit {
+  background-color: red;
+  border-radius: 5px;
+  color: white;
+  display: block;
+  font-family: 'DM Serif Display';
+  font-size: 20px;
+  height: 40px;
+  margin: auto;
+  width: 100px;
+}

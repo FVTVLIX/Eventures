@@ -1,0 +1,12 @@
+.ticket_banner {
+  font-family: 'Staatliches';
+  font-size: 45px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.qr_code {
+  display: block;
+  margin: auto;
+  width: 800px;
+}

@@ -5,6 +5,16 @@
   text-align: center;
 }
 
+.info_category {
+  font-family: 'Lato';
+  font-size: 15px;
+  text-align: center;
+}
+
+.info_container {
+  margin-bottom: 300px;
+}
+
 .info_image {
   display: block;
   margin-left: auto;
@@ -49,9 +59,10 @@
   background-color: red;
   border-radius: 5px;
   color: white;
+  display: block;
   font-family: 'DM Serif Display';
   font-size: 20px;
   height: 40px;
-  margin: 30px;
+  margin: 30px auto;
   width: 100px;
 }

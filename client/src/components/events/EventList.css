@@ -35,3 +35,21 @@ a {
   letter-spacing: .5px;
   margin: 5px 0 15px 0;
 }
+
+.eventlist_button {
+  background-color: red;
+  border-radius: 5px;
+  display: block;
+  color: white;
+  font-family: 'DM Serif Display';
+  font-size: 20px;
+  height: 40px;
+  margin: 10px auto;
+  width: 100px;
+}
+
+.eventlist_container {
+  margin: 100px auto;
+  text-align: center;
+  width:90%;
+}

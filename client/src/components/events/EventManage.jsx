@@ -28,7 +28,7 @@ export default class EventManage extends Component {
   setEventForm = () => {
     const { title, hosted_by, date, location, price, img_url } = this.props.event;
     this.setState({ title, hosted_by, date, location, price, img_url })
-  } 
+  }
 
   handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,10 +58,12 @@ export default class EventManage extends Component {
             img_url: ""
           })
         }}>
-        
-        <h3>Manage Event</h3>
 
-        <label htmlFor="title">Title:</label>
+        <h3 className="edit_banner">Manage Event</h3>
+
+        <label
+          className="edit_title"
+          htmlFor="title">Title: </label>
         <input
           id="title"
           name="title"
@@ -70,7 +72,11 @@ export default class EventManage extends Component {
           onChange={this.handleChange}
         />
 
-        <label htmlFor="hosted_by">Hosted By:</label>
+        <br />
+
+        <label
+          className="edit_host"
+          htmlFor="hosted_by">Hosted By: </label>
         <input
           id="hosted_by"
           name="hosted_by"
@@ -78,8 +84,13 @@ export default class EventManage extends Component {
           value={hosted_by}
           onChange={this.handleChange}
         />
-        
-        <label htmlFor="date">Date:</label>
+
+        <br />
+
+
+        <label
+          className="edit_date"
+          htmlFor="date">Date: </label>
         <input
           id="date"
           name="date"
@@ -88,7 +99,12 @@ export default class EventManage extends Component {
           onChange={this.handleChange}
         />
 
-        <label htmlFor="location">Location:</label>
+        <br />
+
+
+        <label
+          className="edit_location"
+          htmlFor="location">Location: </label>
         <input
           id="location"
           name="location"
@@ -97,7 +113,12 @@ export default class EventManage extends Component {
           onChange={this.handleChange}
         />
 
-        <label htmlFor="price">Price:</label>
+        <br />
+
+
+        <label
+          className="edit_price"
+          htmlFor="price">Price: </label>
         <input
           id="price"
           name="price"
@@ -106,7 +127,12 @@ export default class EventManage extends Component {
           onChange={this.handleChange}
         />
 
-        <label htmlFor="img_url">Image URL:</label>
+        <br />
+
+
+        <label
+          className="edit_image"
+          htmlFor="img_url">Image URL: </label>
         <input
           id="img_url"
           name="img_url"
@@ -116,8 +142,10 @@ export default class EventManage extends Component {
         />
 
 
-        <button>Submit</button>
-        
+
+
+        <button className="edit_submit">Submit</button>
+
       </form>
     )
   }

@@ -1,3 +1,18 @@
+.add_cat_button {
+  background-color: red;
+  border-radius: 5px;
+  color: white;
+  font-family: 'DM Serif Display';
+  font-size: 20px;
+  height: 40px;
+  margin: 30px;
+  width: 100px;
+}
+
+.added_category {
+  font-family: 'Playfair Display';
+  font-size: 25px;
+}
 
 form {
   text-align: center;
@@ -49,9 +64,10 @@ input {
   background-color: red;
   border-radius: 5px;
   color: white;
+  display: block;
   font-family: 'DM Serif Display';
   font-size: 20px;
   height: 40px;
-  margin: 30px;
+  margin: auto;
   width: 100px;
 }

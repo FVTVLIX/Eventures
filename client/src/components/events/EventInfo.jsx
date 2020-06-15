@@ -39,15 +39,16 @@ export default class EventInfo extends Component {
   render() {
 
     const { event } = this.state;
-    const { categories, currentUser } = this.props;
+    const { currentUser } = this.props;
 
     return (
-      <div>
+      <div className="info_container">
         <h1 className="info_banner">Event Info</h1>
         {
           event && (
             <>
               <img
+                alt="event_info_image"
                 className="info_image"
                 src={event.img_url} />
               <h3 className="info_title">{event.title}</h3>
@@ -55,18 +56,18 @@ export default class EventInfo extends Component {
               <p className="info_date">Date: {event.date}</p>
               <p className="info_location">Location: {event.location}</p>
               <p className="info_price">Price: {event.price}</p>
-              {event.categories.map(category => (
-                <p key={category.id}>{category.name}</p>
-              ))}
+                  {event.categories.map(category => (
+                    <p className="info_category" key={category.id}>{category.name}</p>
+                  ))}
               {
                 currentUser && currentUser.id === event.user_id && (
                   <form onSubmit={this.handleSubmit}>
-                    <select onChange={this.handleChange}>
+                    {/* <select onChange={this.handleChange}>
                       <option>Select A Category</option>
                       {categories.map(category => (
                         <option value={category.id} key={category.id}>{category.name}</option>
                       ))}
-                    </select>
+                    </select> */}
                   </form>
                 )
               }

@@ -19,9 +19,9 @@ export default function Nav(props) {
           :
           <>
             <Link className="login_link" to='/user/login'>Login/Register</Link>
-            <img
+            {/* <img
               className="nav_image"
-              src='https://i.imgur.com/csb7QW9.jpg' />
+              src='https://i.imgur.com/csb7QW9.jpg' /> */}
           </>
       }
 
