@@ -37,6 +37,10 @@ export default class App extends Component {
     this.setState({ currentUser })
   }
 
+  componentDidMount() {
+    this.handleVerify();
+  }
+
 
 
 

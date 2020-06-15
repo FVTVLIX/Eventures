@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
 
-    render json: @events
+    render json: @events, include: :categories
   end
 
   # GET /events/1
@@ -17,11 +17,17 @@ class EventsController < ApplicationController
 
   # POST /events
   def create
-    @event = Event.new(event_params)
+    new_params = event_params
+
+    new_params[:categories] = new_params[:categories].map do |cat|
+      Category.find(cat)
+    end
+    
+    @event = Event.new(new_params)
     @event.user = @current_user
 
     if @event.save
-      render json: @event, status: :created, location: @event
+      render json: @event, include: :categories, status: :created, location: @event
     else
       render json: @event.errors, status: :unprocessable_entity
     end
@@ -30,7 +36,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   def update
     if @event.update(event_params)
-      render json: @event
+      render json: @event, include: :categories
     else
       render json: @event.errors, status: :unprocessable_entity
     end
@@ -58,6 +64,6 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:title, :hosted_by, :date, :location, :price, :img_url )
+      params.require(:event).permit(:title, :hosted_by, :date, :location, :price, :img_url, :categories => [] )
     end
 end

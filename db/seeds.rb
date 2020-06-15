@@ -13,7 +13,7 @@ User.destroy_all
 
 @user = User.create!({ username: 'admin', email: 'admin@email.com', password: '123456' })
 
-@all = Category.create!(name: 'All')
+# @all = Category.create!(name: 'All')
 @free = Category.create!(name: 'Free')
 @music = Category.create!(name: 'Music')
 @food = Category.create!(name: 'Food & Drink')
@@ -27,7 +27,7 @@ Event.create!(
   location: 'Central Park',
   price: 'Free',
   img_url: 'https://i.imgur.com/x3bNna2.jpg',
-  categories: [@all, @free, @food],
+  categories: [@free, @food],
   user: @user
 )
 
@@ -38,7 +38,7 @@ Event.create!(
   location: 'Central Park',
   price: 'Free',
   img_url: 'https://i.imgur.com/xafDgEA.jpg',
-  categories: [@all, @free, @food, @music],
+  categories: [@free, @food, @music],
   user: @user
 )
 
@@ -49,7 +49,7 @@ Event.create!(
   location: 'My Place',
   price: '$1.00',
   img_url: 'https://i.imgur.com/b2COSYO.jpg',
-  categories: [@all, @food, @music, @weekend],
+  categories: [@food, @music, @weekend],
   user: @user
 )
 
@@ -60,7 +60,7 @@ Event.create!(
   location: 'His House',
   price: '$1,000,000.00',
   img_url: 'https://images.unsplash.com/photo-1446669052213-5dcff53f1f3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2253&q=80',
-  categories: [@all, @food, @weekend, @charity],
+  categories: [@food, @weekend, @charity],
   user: @user
 )
 
@@ -71,7 +71,7 @@ Event.create!(
   location: 'Brooklyn',
   price: 'Free',
   img_url: 'https://i.imgur.com/CSBfEGZ.jpg',
-  categories: [@all, @free, @food, @music],
+  categories: [@free, @food, @music],
   user: @user
 )
 
@@ -82,6 +82,6 @@ Event.create!(
   location: 'Manhattan',
   price: '$20.00',
   img_url: 'https://images.unsplash.com/photo-1575037614876-c38a4d44f5b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
-  categories: [@all, @food, @music, @weekend, @charity],
+  categories: [@food, @music, @weekend, @charity],
   user: @user
 )

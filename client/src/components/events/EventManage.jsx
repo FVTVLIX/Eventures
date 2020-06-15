@@ -26,14 +26,14 @@ export default class EventManage extends Component {
   }
 
   setEventForm = () => {
-    const { name } = this.props.event;
-    this.setState({ name })
+    const { title, hosted_by, date, location, price, img_url } = this.props.event;
+    this.setState({ title, hosted_by, date, location, price, img_url })
   } 
 
   handleChange = (e) => {
-    const { value } = e.target;
+    const { name, value } = e.target;
     this.setState({
-      name: value
+      [name]: value
     })
   }
 
