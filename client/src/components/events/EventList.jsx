@@ -4,14 +4,22 @@ import { Link } from 'react-router-dom'
 
 export default function EventList(props) {
 
-  const { events, currentUser, destroyEvent, history } = props;
+  const { events, currentUser, destroyEvent, history, categoryId } = props;
 
   return (
     <>
       <div>
         <h3 className="events_banner">Events</h3>
         {
-          events.map(event => (
+          events
+            .filter((event) => {
+              if (categoryId) {
+                return event.categories.map(cat => cat.id).includes(parseInt(categoryId))
+              } else {
+                return true
+              }
+            })
+            .map(event => (
             <React.Fragment key={event.id}>
               <div className="event_container">
                 <Link to={`/event/${event.id}`}>

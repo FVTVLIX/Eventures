@@ -18,9 +18,16 @@ export default class Main extends Component {
 
   state = {
     categories: [],
-    events: []
+    events: [],
+    filteredCat: ""
   }
 
+  handleFilteredCat = (e) => {
+    const { value } = e.target;
+    this.setState({
+      filteredCat: value
+    })
+  }
 
   componentDidMount() {
     this.getCategories();
@@ -68,7 +75,7 @@ export default class Main extends Component {
     return (
       <main>
 
-        <Route 
+        <Route
           exact path='/'
           render={(props) => (
             <Home
@@ -77,75 +84,99 @@ export default class Main extends Component {
               currentUser={this.props.currentUser}
             />
           )} />
-        
+
 
         <Route
           exact path='/user/login'
           render={(props) => (
-          <Login
-            {...props}
-            handleLoginSubmit={this.props.handleLoginSubmit} />
-        )} />
+            <Login
+              {...props}
+              handleLoginSubmit={this.props.handleLoginSubmit} />
+          )} />
 
         <Route
           exact path='/user/register'
           render={(props) => (
-          <SignUp
-            {...props}
-            handleRegisterSubmit={this.props.handleRegisterSubmit}
-          />
-        )} />
+            <SignUp
+              {...props}
+              handleRegisterSubmit={this.props.handleRegisterSubmit}
+            />
+          )} />
 
         <Route
           exact path='/categories'
-          render={() => (
-          <ShowCategories
-            categories={this.state.categories}
-          />
-        )} />
+          render={(props) => (
+            <ShowCategories
+              {...props}
+              events={this.state.events}
+              currentUser={this.props.currentUser}
+              destroyEvent={this.destroyEvent}
+              handleFilteredCat={this.handleFilteredCat}
+              categories={this.state.categories}
+            />
+          )} />
+
+        <Route
+          path='/categories/:id'
+          render={(props) => {
+            const categoryId = props.match.params.id
+            return <ShowCategories
+              {...props}
+              categoryId={categoryId}
+              categories={this.state.categories}
+              events={this.state.events}
+              currentUser={this.props.currentUser}
+              destroyEvent={this.destroyEvent}
+              handleFilteredCat={this.handleFilteredCat}
+            />
+          }} />
 
         <Route
           exact path='/events'
-          render={() => (
-          <EventList
-            events={this.state.events}
-            currentUser={this.props.currentUser}
-            destroyEvent={this.destroyEvent}
-          />
-        )} />
+          render={(props) => (
+            <EventList
+              {...props}
+              events={this.state.events}
+              currentUser={this.props.currentUser}
+              destroyEvent={this.destroyEvent}
+              handleFilteredCat={this.handleFilteredCat}
+            />
+          )} />
 
         <Route
           exact path='/new/event'
           render={(props) => (
-          <CreateEvent
-            {...props}
-            postEvent={this.postEvent}
-          />
-        )} />
+            <CreateEvent
+              {...props}
+              postEvent={this.postEvent}
+              categories={this.state.categories}
+              
+            />
+          )} />
 
         <Route
           exact path='/event/:id'
           render={(props) => {
-          const eventId = props.match.params.id;
-          return <EventInfo
-            eventId={eventId}
-            categories={this.state.categories}
-            currentUser={this.props.currentUser}
-          />
-        }} />
+            const eventId = props.match.params.id;
+            return <EventInfo
+              eventId={eventId}
+              categories={this.state.categories}
+              currentUser={this.props.currentUser}
+            />
+          }} />
 
         <Route
           exact path='/event/:id/edit'
           render={(props) => {
-          const eventId = props.match.params.id;
-          const event = this.state.events.find(event => event.id === parseInt(eventId))
-          return <EventManage
-            {...props}
-            event={event}
-            putEvent={this.putEvent}
-          />
+            const eventId = props.match.params.id;
+            const event = this.state.events.find(event => event.id === parseInt(eventId))
+            return <EventManage
+              {...props}
+              event={event}
+              putEvent={this.putEvent}
+            />
           }} />
-        
+
         <Route
           exact path='/event/:id/ticket'
           render={(props) => {
