@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import './EventInfo.css'
+import { Link } from 'react-router-dom'
 import { getOneEvent, eventToCategory } from '../../services/events'
 
 
@@ -41,10 +43,18 @@ export default class EventInfo extends Component {
 
     return (
       <div>
+        <h1 className="info_banner">Event Info</h1>
         {
           event && (
             <>
-              <h3>{event.title}</h3>
+              <img
+                className="info_image"
+                src={event.img_url} />
+              <h3 className="info_title">{event.title}</h3>
+              <p className="info_host">Hosted By: {event.hosted_by}</p>
+              <p className="info_date">Date: {event.date}</p>
+              <p className="info_location">Location: {event.location}</p>
+              <p className="info_price">Price: {event.price}</p>
               {event.categories.map(category => (
                 <p key={category.id}>{category.name}</p>
               ))}
@@ -60,6 +70,9 @@ export default class EventInfo extends Component {
                   </form>
                 )
               }
+              <Link to={`/event/${event.id}/ticket`}>
+                <button className="rsvp">RSVP</button>
+              </Link>
             </>
           )
         }

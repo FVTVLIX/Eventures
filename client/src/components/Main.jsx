@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
+import './Main.css'
 import { getAllCategories } from '../services/categories'
 import { getAllEvents, createEvent, deleteEvent, updateEvent } from '../services/events'
 import Login from '../components/user/Login'
@@ -9,6 +10,8 @@ import ShowCategories from '../components/events/ShowCategories'
 import CreateEvent from '../components/events/CreateEvent'
 import EventInfo from '../components/events/EventInfo'
 import EventManage from '../components/events/EventManage'
+import Home from './Home'
+import Ticket from '../components/events/Ticket'
 
 
 export default class Main extends Component {
@@ -65,6 +68,17 @@ export default class Main extends Component {
     return (
       <main>
 
+        <Route 
+          exact path='/'
+          render={(props) => (
+            <Home
+              {...props}
+              events={this.state.events}
+              currentUser={this.props.currentUser}
+            />
+          )} />
+        
+
         <Route
           path='/user/login'
           render={(props) => (
@@ -110,7 +124,7 @@ export default class Main extends Component {
         )} />
 
         <Route
-          path='/events/:id'
+          path='/event/:id'
           render={(props) => {
           const eventId = props.match.params.id;
           return <EventInfo
@@ -130,7 +144,19 @@ export default class Main extends Component {
             event={event}
             putEvent={this.putEvent}
           />
-        }} />
+          }} />
+        
+        <Route
+          path='/event/:id/ticket'
+          render={(props) => {
+            const eventId = props.match.params.id;
+            return <Ticket
+              eventId={eventId}
+              currentUser={this.props.currentUser}
+
+            />
+
+          }} />
 
 
       </main>

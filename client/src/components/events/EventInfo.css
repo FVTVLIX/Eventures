@@ -1,0 +1,57 @@
+.info_banner {
+  font-family: 'Staatliches';
+  font-size: 45px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.info_image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+.info_title {
+  font-family: 'DM Serif Display';
+  font-size: 70px;
+  text-align: center;
+
+}
+
+.info_host {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+  text-align: center;
+
+}
+
+.info_date {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+  text-align: center;
+
+}
+.info_location {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+  text-align: center;
+
+}
+.info_price {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+  text-align: center;
+
+}
+
+.rsvp {
+  background-color: red;
+  border-radius: 5px;
+  color: white;
+  font-family: 'DM Serif Display';
+  font-size: 20px;
+  height: 40px;
+  margin: 30px;
+  width: 100px;
+}

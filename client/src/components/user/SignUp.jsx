@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom';
+import './SignUp.css'
 
 
 export default class SignUp extends Component {
@@ -28,7 +29,7 @@ export default class SignUp extends Component {
       <form onSubmit={(e) => {
         e.preventDefault();
         handleRegisterSubmit(this.state);
-        history.push('/');
+        history.push('/events');
         this.setState({
           username: "",
           email: "",
@@ -36,8 +37,10 @@ export default class SignUp extends Component {
         })
       }}>
 
-        <h3>Register</h3>
-        <label htmlFor="username">username:
+        <h3 className="register_banner">Register</h3>
+        <label
+          className="register_username"
+          htmlFor="username">username: 
           <input
             id="username"
             type="text"
@@ -49,7 +52,9 @@ export default class SignUp extends Component {
 
         <br />
 
-        <label htmlFor="email">email:
+        <label
+          className="register_email"
+          htmlFor="email">email: 
           <input
             id="email"
             type="text"
@@ -61,7 +66,9 @@ export default class SignUp extends Component {
 
         <br />
 
-        <label htmlFor="password">password:
+        <label
+          className="register_password"
+          htmlFor="password">password: 
           <input
             id="password"
             type="password"
@@ -73,7 +80,13 @@ export default class SignUp extends Component {
 
         <br />
 
-        <button>Submit</button>
+        <Link
+          className="register_link"
+          to='/user/login'>Already A User? Login Here!</Link>
+        
+        <br />
+
+        <button className="register_submit">Submit</button>
         
       </form>
     )

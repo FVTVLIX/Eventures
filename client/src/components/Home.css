@@ -1,0 +1,44 @@
+.home_banner {
+  font-family: 'Staatliches';
+  font-size: 75px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.home_container {
+  border: black solid 2px;
+  margin: 50px auto;
+  width: 900px;
+}
+
+.home_date {
+  color: orange;
+  font-family: 'Staatliches';
+  font-size: 40px;
+  margin: 5px 0 0 10px;
+  text-align: center;
+}
+
+.home_image {
+  height: 200px;
+  object-fit: cover;
+  width: 900px;
+}
+
+.home_location {
+  color: black;
+  font-family: 'Staatliches';
+  font-size: 25px;
+  letter-spacing: .5px;
+  margin: 5px 0 15px 0;
+  text-align: center;
+}
+
+.home_title {
+  color: black;
+  font-family: 'Staatliches';
+  font-size: 55px;
+  letter-spacing: .5px;
+  margin: 5px 0 15px 0;
+  text-align: center;
+}

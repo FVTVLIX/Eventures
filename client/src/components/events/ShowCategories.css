@@ -1,0 +1,19 @@
+.categories_banner {
+  font-family: 'Staatliches';
+  font-size: 45px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.category_container {
+  margin: 0 0 50px 0;
+  text-align: center;
+
+}
+
+.category_list {
+  color: black;
+  font-family: 'Lato';
+  font-size: 20px;
+  margin: 0 30px;
+}
