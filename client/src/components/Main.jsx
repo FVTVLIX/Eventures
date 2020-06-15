@@ -80,7 +80,7 @@ export default class Main extends Component {
         
 
         <Route
-          path='/user/login'
+          exact path='/user/login'
           render={(props) => (
           <Login
             {...props}
@@ -88,7 +88,7 @@ export default class Main extends Component {
         )} />
 
         <Route
-          path='/user/register'
+          exact path='/user/register'
           render={(props) => (
           <SignUp
             {...props}
@@ -97,7 +97,7 @@ export default class Main extends Component {
         )} />
 
         <Route
-          path='/categories'
+          exact path='/categories'
           render={() => (
           <ShowCategories
             categories={this.state.categories}
@@ -105,7 +105,7 @@ export default class Main extends Component {
         )} />
 
         <Route
-          path='/events'
+          exact path='/events'
           render={() => (
           <EventList
             events={this.state.events}
@@ -115,7 +115,7 @@ export default class Main extends Component {
         )} />
 
         <Route
-          path='/new/event'
+          exact path='/new/event'
           render={(props) => (
           <CreateEvent
             {...props}
@@ -124,7 +124,7 @@ export default class Main extends Component {
         )} />
 
         <Route
-          path='/event/:id'
+          exact path='/event/:id'
           render={(props) => {
           const eventId = props.match.params.id;
           return <EventInfo
@@ -135,7 +135,7 @@ export default class Main extends Component {
         }} />
 
         <Route
-          path='/event/:id/edit'
+          exact path='/event/:id/edit'
           render={(props) => {
           const eventId = props.match.params.id;
           const event = this.state.events.find(event => event.id === parseInt(eventId))
@@ -147,7 +147,7 @@ export default class Main extends Component {
           }} />
         
         <Route
-          path='/event/:id/ticket'
+          exact path='/event/:id/ticket'
           render={(props) => {
             const eventId = props.match.params.id;
             return <Ticket
