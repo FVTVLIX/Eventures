@@ -1,0 +1,34 @@
+
+.login_banner {
+  font-family: 'Staatliches';
+  font-size: 45px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.login_username {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+}
+
+.login_password {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+}
+
+.login_submit {
+  background-color: red;
+  border-radius: 5px;
+  color: white;
+  font-family: 'DM Serif Display';
+  font-size: 20px;
+  height: 40px;
+  margin: 30px;
+  width: 100px;
+}
+
+.register_link {
+  font-family: 'Prata';
+  font-size: 20px;
+  text-decoration: none;
+}

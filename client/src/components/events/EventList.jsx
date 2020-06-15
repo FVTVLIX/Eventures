@@ -8,19 +8,21 @@ export default function EventList(props) {
 
   return (
     <>
-      <div className="event_container">
+      <div>
         <h3 className="events_banner">Events</h3>
         {
           events.map(event => (
             <React.Fragment key={event.id}>
-              <Link to={`/events/${event.id}`}>
-                <p className='event_title'>{event.title}</p>
-                <p className='event_date'>{event.date}</p>
-                <img
-                  // alt="event_images"
-                  className='event_image'
-                  src={event.img_url} />
-              </Link>
+              <div className="event_container">
+                <Link to={`/event/${event.id}`}>
+                  <img
+                    // alt="event_images"
+                    className='event_image'
+                    src={event.img_url} />
+                  <p className='event_date'>{event.date}</p>
+                  <p className='event_title'>{event.title}</p>
+                </Link>
+              </div>
               {
                 currentUser && currentUser.id === event.user_id && (
                   <>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './CreateEvent.css'
 
 export default class CreateEvent extends Component {
 
@@ -15,8 +16,6 @@ export default class CreateEvent extends Component {
     const { name, value } = e.target;
     this.setState({
       [name]: value
-
-
     })
   }
 
@@ -41,10 +40,14 @@ export default class CreateEvent extends Component {
             img_url: ""
           })
         }}>
-        
-        <h3>Create An Event</h3>
 
-        <label htmlFor="title">Title:</label>
+        <h3 className="create_banner">Create An Event</h3>
+
+        <div className="form_container">
+
+        <label
+          className="create_title"
+          htmlFor="title">Title: </label>
         <input
           id="title"
           name="title"
@@ -53,7 +56,12 @@ export default class CreateEvent extends Component {
           onChange={this.handleChange}
         />
 
-        <label htmlFor="hosted_by">Hosted By:</label>
+        <br />
+
+
+        <label
+          className="create_host"
+          htmlFor="hosted_by">Hosted By: </label>
         <input
           id="hosted_by"
           name="hosted_by"
@@ -61,8 +69,12 @@ export default class CreateEvent extends Component {
           value={hosted_by}
           onChange={this.handleChange}
         />
-        
-        <label htmlFor="date">Date:</label>
+
+        <br />
+
+        <label
+          className="create_date"
+          htmlFor="date">Date: </label>
         <input
           id="date"
           name="date"
@@ -71,7 +83,11 @@ export default class CreateEvent extends Component {
           onChange={this.handleChange}
         />
 
-        <label htmlFor="location">Location:</label>
+        <br />
+
+        <label
+          className="create_location"
+          htmlFor="location">Location: </label>
         <input
           id="location"
           name="location"
@@ -80,7 +96,11 @@ export default class CreateEvent extends Component {
           onChange={this.handleChange}
         />
 
-        <label htmlFor="price">Price:</label>
+        <br />
+
+        <label
+          className="create_price"
+          htmlFor="price">Price: </label>
         <input
           id="price"
           name="price"
@@ -89,18 +109,26 @@ export default class CreateEvent extends Component {
           onChange={this.handleChange}
         />
 
-        <label htmlFor="img_url">Image URL:</label>
+        <br />
+
+        <label
+          className="create_image"
+          htmlFor="img_url">Image URL: </label>
         <input
           id="img_url"
           name="img_url"
           type="text"
           value={img_url}
           onChange={this.handleChange}
-        />
+          />
+          
+          </div>
+
+        <br />
 
 
-        <button>Submit</button>
-        
+        <button className="create_submit">Submit</button>
+
       </form>
     )
   }

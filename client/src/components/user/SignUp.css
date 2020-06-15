@@ -1,0 +1,36 @@
+form {
+  text-align: center;
+}
+
+.register_banner {
+  font-family: 'Staatliches';
+  font-size: 45px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.register_username {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+}
+
+.register_email {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+}
+
+.register_password {
+  font-family: 'Playfair Display';
+  font-size: 30px;
+}
+
+.register_submit {
+  background-color: red;
+  border-radius: 5px;
+  color: white;
+  font-family: 'DM Serif Display';
+  font-size: 20px;
+  height: 40px;
+  margin: 30px;
+  width: 100px;
+}

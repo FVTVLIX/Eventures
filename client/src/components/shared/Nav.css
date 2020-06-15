@@ -5,6 +5,11 @@ nav {
   text-align: center;
 }
 
+.nav_image {
+  width: 100%;
+
+}
+
 .categories_link {
   color: black;
   margin: 0px 40px;
