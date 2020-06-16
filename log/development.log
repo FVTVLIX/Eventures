@@ -24868,3 +24868,162 @@ Processing by EventsController#show as HTML
 Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 0.8ms | Allocations: 2307)
 
 
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1597723588883931390)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1597723588883931390)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/categories" for ::1 at 2020-06-15 22:39:11 -0400
+Started GET "/events" for ::1 at 2020-06-15 22:39:11 -0400
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#index as HTML
+  [1m[35m (23.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CategoriesController#index as HTML
+  [1m[36mEvent Load (15.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+Completed 200 OK in 35ms (Views: 8.3ms | ActiveRecord: 16.3ms | Allocations: 16353)
+
+
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 7]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 9]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 10]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 12]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 13]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 8]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 92ms (Views: 50.0ms | ActiveRecord: 31.1ms | Allocations: 31987)
+
+
+Started POST "/auth/login" for ::1 at 2020-06-15 22:39:22 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"admin", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"admin", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 243ms (Views: 0.3ms | ActiveRecord: 4.7ms | Allocations: 6480)
+
+
+Started POST "/auth/login" for ::1 at 2020-06-15 22:39:32 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"dre", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"dre", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dre"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.6ms | Allocations: 1169)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/authentication_controller.rb:7:in `login'
+Started POST "/users/" for ::1 at 2020-06-15 22:39:45 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"username"=>"dre", "email"=>"dre@email.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dre"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dre@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (3.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "dre"], ["email", "dre@email.com"], ["password_digest", "$2a$12$aIrqJJewD8hT0mT.yeHrneQCwWnCxJUtjvycC.v4WEw4OQbg8vis2"], ["created_at", "2020-06-16 02:39:45.318519"], ["updated_at", "2020-06-16 02:39:45.318519"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 228ms (Views: 0.5ms | ActiveRecord: 4.8ms | Allocations: 5637)
+
+
+Started GET "/events/9" for ::1 at 2020-06-15 22:39:50 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:62:in `set_event'
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 9]]
+  ↳ app/controllers/events_controller.rb:15:in `show'
+Completed 200 OK in 9ms (Views: 4.5ms | ActiveRecord: 0.7ms | Allocations: 2434)
+
+
+Started GET "/events" for ::1 at 2020-06-16 09:12:16 -0400
+Started GET "/categories" for ::1 at 2020-06-16 09:12:16 -0400
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#index as HTML
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+  [1m[36mEvent Load (10.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 30ms (Views: 16.2ms | ActiveRecord: 8.8ms | Allocations: 7590)
+
+
+  [1m[36mCategory Load (5.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 7]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 9]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 10]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 12]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 13]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 8]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 118ms (Views: 69.4ms | ActiveRecord: 35.0ms | Allocations: 30619)
+
+
+Started POST "/auth/login" for ::1 at 2020-06-16 09:12:24 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"admin", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"admin", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 269ms (Views: 0.4ms | ActiveRecord: 4.2ms | Allocations: 6444)
+
+
+Started GET "/auth/verify" for ::1 at 2020-06-16 11:22:30 -0400
+Started GET "/events" for ::1 at 2020-06-16 11:22:30 -0400
+Started GET "/categories" for ::1 at 2020-06-16 11:22:30 -0400
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (18.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#verify as HTML
+Processing by EventsController#index as HTML
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (2.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mEvent Load (7.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/categories_controller.rb:8:in `index'
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mUser Load (27.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 55ms (Views: 14.8ms | ActiveRecord: 36.5ms | Allocations: 17202)
+
+
+  ↳ app/controllers/application_controller.rb:19:in `authorize_request'
+Completed 200 OK in 131ms (Views: 1.8ms | ActiveRecord: 67.0ms | Allocations: 27587)
+
+
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 7]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 9]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (1.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 10]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 12]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 13]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_events" ON "categories"."id" = "categories_events"."category_id" WHERE "categories_events"."event_id" = $1[0m  [["event_id", 8]]
+  ↳ app/controllers/events_controller.rb:10:in `index'
+Completed 200 OK in 153ms (Views: 94.3ms | ActiveRecord: 34.1ms | Allocations: 35417)
+
+
+Started POST "/auth/login" for ::1 at 2020-06-16 11:32:12 -0400
+Processing by AuthenticationController#login as HTML
+  Parameters: {"auth"=>{"username"=>"admin", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"admin", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 224ms (Views: 1.2ms | ActiveRecord: 1.3ms | Allocations: 1307)
+
+

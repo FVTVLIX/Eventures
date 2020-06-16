@@ -45,6 +45,9 @@ export default function EventList(props) {
               </React.Fragment>
             ))
         }
+            <Link to='/new/event'>
+            <button className="eventlist_button">Create</button>
+          </Link>
       </div>
     </>
   )

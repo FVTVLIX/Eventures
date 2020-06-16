@@ -36,7 +36,7 @@ _The **Eventures** MVP will include having a fully functioning backend RESTful J
 ### Goals
 
 - _Implement CRUD (Create, Read, Update, Delete)_
-- _Create a database utilizing at least 3 tables (Users, Hosts, Events)_
+- _Create a database utilizing at least 3 tables (Users, Categories, Events)_
 - _Implement Authentication using JWT_
 - _Have at least 8 functioning, React components_
 - _Use only React for DOM manipulation_
@@ -44,7 +44,7 @@ _The **Eventures** MVP will include having a fully functioning backend RESTful J
 
 <br>
 
-### Libraries
+<!-- ### Libraries
 
 > Use this section to list all supporting libraries and dependencies, and their role in the project.
 
@@ -54,7 +54,7 @@ _The **Eventures** MVP will include having a fully functioning backend RESTful J
 |   React Router   | _Lorem ipsum dolor sit amet, consectetur._ |
 | React SemanticUI | _Lorem ipsum dolor sit amet, consectetur._ |
 |     Express      | _Lorem ipsum dolor sit amet, consectetur._ |
-|  Express Router  | _Lorem ipsum dolor sit amet, consectetur._ |
+|  Express Router  | _Lorem ipsum dolor sit amet, consectetur._ | -->
 
 <br>
 
@@ -102,6 +102,8 @@ src
       |__ App.css
       |__ Index.jsx
       |__ Index.css
+      |__ Home.jsx
+      |__ Home.css
       |__ Main.jsx
       |__ Main.css
           |__ User
@@ -112,14 +114,16 @@ src
                 |__ Profile.jsx
                 |__ Profile.css
           |__ Events
-                |__ EventList.jsx
-                |__ EventList.css
+                |__ CreateEvent.jsx
+                |__ CreateEvent.css
                 |__ EventInfo.jsx
                 |__ EventInfo.css
-                |__ EventCreate.jsx
-                |__ EventCreate.css
+                |__ EventList.jsx
+                |__ EventList.css
                 |__ EventManage.jsx
                 |__ EventManage.css
+                |__ ShowCategories.jsx
+                |__ ShowCategories.css
                 |__ Ticket.jsx
                 |__ Ticket.css
           |__ Shared
@@ -152,18 +156,18 @@ src
 
 | Task                | Priority | Estimated Time | Time Invested | Actual Time |
 | ------------------- | :------: | :------------: | :-----------: | :---------: |
-| Design/Basic Structure    |    M     |     5 hrs      |     TBD     |    TBD    |
-| Wireframing    |    H     |     4 hrs      |     TBD     |    TBD    |
-| Pseudocoding    |    M     |     3 hrs      |     TBD     |    TBD    |
-| Design (CSS)    |    H     |     4 hrs      |     TBD     |    TBD    |
-| Create CRUD Actions |    H     |     3 hrs      |     TBD     |     TBD     |
-| Authentication    |    H     |     3 hrs      |     TBD     |    TBD    |
-| Accounts/Profiles    |    H     |     4 hrs      |     TBD     |    TBD    |
-| React/Component Coding    |    H     |     5 hrs      |     TBD     |    TBD    |
-| MVP    |    H     |     5 hrs      |     TBD     |    TBD    |
-| Functioning Event Forms    |    H     |     3 hrs      |     TBD     |    TBD    |
+| Design/Basic Structure    |    M     |     5 hrs      |     3 hrs     |    3 hrs    |
+| Wireframing    |    H     |     4 hrs      |     2 hrs     |    2 hrs    |
+| Pseudocoding    |    M     |     3 hrs      |     2 hrs     |    2 hrs    |
+| Design (CSS)    |    H     |     4 hrs      |     6 hrs     |    6 hrs    |
+| Create CRUD Actions |    H     |     3 hrs      |     4 hrs     |     4 hrs     |
+| Authentication    |    H     |     3 hrs      |     3 hrs     |    3 hrs    |
+| Accounts/Profiles    |    H     |     4 hrs      |     2 hrs     |    2 hrs    |
+| React/Component Coding    |    H     |     5 hrs      |     8 hrs     |    8 hrs    |
+| MVP    |    H     |     5 hrs      |     4 hrs     |    4 hrs    |
+| Functioning Event Forms    |    H     |     3 hrs      |     5 hrs     |    5 hrs    |
 | Post-MVP    |    L     |     3 hrs      |     TBD     |    TBD    |
-| TOTAL               |          |     42 hrs      |     TBD     |     TBD     |
+| TOTAL               |          |     42 hrs      |     39 hrs     |     TBD     |
 
 
 <br>
@@ -190,8 +194,47 @@ src
 
 ## Code Showcase
 
-> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
+_Filtering through the categories was a bit of a challenge. This was mainly due to the way I had the Categories table setup in the Back End. Here I'm taking the appropriate Category ID and mapping it through the selected filter. I'm also displaying it in newest event first._
 
-## Code Issues & Resolutions
+```
+        {
+          events
+            .filter((event) => {
+              if (categoryId) {
+                return event.categories.map(cat => cat.id).includes(parseInt(categoryId))
+              } else {
+                return true
+              }
+            })
+            .reverse()
+            .map(event => (
+              <React.Fragment key={event.id}>
+                <div className="event_container">
+                  <Link to={`/event/${event.id}`}>
+                    <img
+                      alt="event_images"
+                      className='event_image'
+                      src={event.img_url} />
+                    <p className='event_date'>{event.date}</p>
+                    <p className='event_title'>{event.title}</p>
+                  </Link>
+                  {
+                    currentUser && currentUser.id === event.user_id && (
+                      <>
+                        <button className="eventlist_button" onClick={() => history.push(`/event/${event.id}/edit`)}>Edit</button>
+                        <button className="eventlist_button" onClick={() => destroyEvent(event.id)}>Delete</button>
+                        <Link to='/new/event'>
+                          <button className="eventlist_button">Create</button>
+                        </Link>
+                      </>
+                    )
+                  }
+                </div>
+              </React.Fragment>
+            ))
+        }
+```
 
-> Use this section to list of all major issues encountered and their resolution, if you'd like.
+<!-- ## Code Issues & Resolutions
+
+> Use this section to list of all major issues encountered and their resolution, if you'd like. -->
