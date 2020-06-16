@@ -17,3 +17,13 @@
   font-size: 20px;
   margin: 0 30px;
 }
+
+@media screen and (max-width: 905px) {
+
+  .category_list {
+    display: block;
+    font-size: 20px;
+    margin: 40px auto;
+  }
+
+}

@@ -71,3 +71,47 @@ input {
   margin: auto;
   width: 100px;
 }
+
+@media screen and (max-width: 905px) {
+
+  .create_banner {
+    font-size: 50px;
+  }
+  
+  .create_title {
+    font-size: 20px;
+  }
+
+  .create_host {
+    font-size: 20px;
+  }
+
+  .create_date {
+    font-size: 20px;
+  }
+
+  .create_location {
+    font-size: 20px;
+  }
+
+  .create_price {
+    font-size: 20px;
+  }
+
+  .create_image {
+    font-size: 20px;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+
+  .create_banner {
+    font-size: 30px;
+  }
+
+  .create_submit {
+    margin-bottom: 30px;
+  }
+
+}

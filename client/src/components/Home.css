@@ -42,3 +42,41 @@
   margin: 5px 0 15px 0;
   text-align: center;
 }
+
+@media screen and (max-width: 905px) {
+
+  .home_banner {
+    font-size: 50px;
+  }
+
+  .home_container {
+    width: auto;
+  }
+
+  .home_image {
+    width: 100%;
+    
+  }
+
+
+}
+
+@media screen and (max-width: 500px) {
+
+  .home_banner {
+    font-size: 30px;
+  }
+
+  .home_date {
+    font-size: 20px;
+  }
+
+  .home_title {
+    font-size: 30px;
+  }
+
+  .home_location {
+    font-size: 15px;
+  }
+
+}
