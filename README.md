@@ -23,6 +23,10 @@
 
 _**Eventures** is a full-stack app dedicated to fulfill your event-finding needs! An app that can provide multiple functions with dedicated roles for Users and Event-Hosts. Maintain events through a created profile for easy and seemless management._
 
+## Deployed Site
+
+[Eventures Live Site](https://eventures.netlify.app/)
+
 
 <br>
 
