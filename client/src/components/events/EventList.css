@@ -53,3 +53,40 @@ a {
   text-align: center;
   width:90%;
 }
+
+@media screen and (max-width: 905px) {
+
+  .event_container {
+    margin: 10px auto;
+    width: 100%;
+  }
+
+  .event_date {
+    font-size: 40px;
+  }
+
+  .event_image {
+    width: 100%;
+  }
+
+  .event_title {
+    font-size: 60px;
+  }
+
+  .events_banner {
+    font-size: 100px;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+
+  .event_date {
+    font-size: 20px;
+  }
+
+  .event_title {
+    font-size: 30px;
+  }
+
+}

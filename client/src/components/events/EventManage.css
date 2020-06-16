@@ -55,3 +55,47 @@ input {
   margin: auto;
   width: 100px;
 }
+
+@media screen and (max-width: 905px) {
+
+  .edit_banner {
+    font-size: 50px;
+  }
+  
+  .edit_title {
+    font-size: 20px;
+  }
+
+  .edit_host {
+    font-size: 20px;
+  }
+
+  .edit_date {
+    font-size: 20px;
+  }
+
+  .edit_location {
+    font-size: 20px;
+  }
+
+  .edit_price {
+    font-size: 20px;
+  }
+
+  .edit_image {
+    font-size: 20px;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+
+  .edit_banner {
+    font-size: 30px;
+  }
+
+  .edit_submit {
+    margin-bottom: 30px;
+  }
+
+}

@@ -61,3 +61,66 @@ nav {
   margin: 10px 150px 0px 0;
   text-decoration: none;
 }
+
+@media screen and (max-width: 900px) {
+
+  .nav_title {
+    font-size: 35px;
+  }
+
+  .login_link {
+    font-size: 20px;
+    margin: 20px 20px 0 0;
+  }
+
+  .events_link {
+    font-size: 30px;
+  }
+
+  .categories_link {
+    font-size: 30px;
+  }
+
+  .logout_button {
+    font-size: 20px;
+    height: 40px;
+    width: 100px;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+
+  .categories_link {
+    font-size: 20px;
+  }
+
+  .events_link {
+    font-size: 20px;
+  }
+
+  .login_link {
+    float: left;
+    font-size: 40px;
+    /* margin: 10px auto; */
+  }
+
+  .logout_button {
+    display: block;
+    float: left;
+    font-size: 15px;
+    height: 40px;
+    margin: 40px;
+    width: 340px;
+  }
+
+  .nav_title {
+    font-size: 50px;
+    margin: 10px auto;
+  }
+
+
+
+
+}
+

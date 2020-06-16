@@ -10,3 +10,15 @@
   margin: auto;
   width: 800px;
 }
+
+@media screen and (max-width: 905px) {
+
+  .ticket_banner {
+    font-size: 70px;
+  }
+
+  .qr_code {
+    width: 90%;
+  }
+
+}
