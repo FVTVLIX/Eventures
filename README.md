@@ -194,7 +194,7 @@ src
 
 ## Code Showcase
 
-_Filtering through the categories was a bit of a challenge. This was mainly due to the way I had the Categories table setup in the Back End. Here I'm taking the appropriate Event and mapping it through its corresponding Category ID filter. I'm also displaying it in newest event first._
+_Filtering through the categories was a bit of a challenge. This was mainly due to the way I had the Categories table setup in the Back End. I'm taking the appropriate Event and mapping it through its corresponding Category ID filter. I'm also displaying it in newest event first._
 
 ```
         {
